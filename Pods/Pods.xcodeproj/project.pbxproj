@@ -1,0 +1,463 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		3FF2DEB51844DDCAAC8273B3 /* UIImage+HTButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 44F1347BE6351DADD65A988B /* UIImage+HTButton.m */; };
+		57BF7674C4D820AD35AB80D8 /* UIColor+HTColor.h in Headers */ = {isa = PBXBuildFile; fileRef = 25FC4594693C994F796EEA23 /* UIColor+HTColor.h */; };
+		6E6792EA4A38EF6244993C2E /* UIColor+HTColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 2379B0581905E1EC9B6658AE /* UIColor+HTColor.m */; };
+		88727DB8CC3125654323E163 /* HTPressableButtonPrefs.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A75B2FF0E96EBC6E2A8B0AE /* HTPressableButtonPrefs.m */; };
+		9BF4F27E89284EB26C8858CB /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 330E009D36E5C33D994ECEA1 /* Foundation.framework */; };
+		A7539D15516F51CB7DF2DD36 /* Pods-BlockDump-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 37E9DFA104633E1B76A83158 /* Pods-BlockDump-dummy.m */; };
+		AEF9516963B4E521DAAB04A0 /* UIImage+HTButton.h in Headers */ = {isa = PBXBuildFile; fileRef = 5254A96A98A98076B88FF097 /* UIImage+HTButton.h */; };
+		CA463DEF7DDD6395B1E3420A /* HTPressableButtonPrefs.h in Headers */ = {isa = PBXBuildFile; fileRef = 790BED09695CA803F3928840 /* HTPressableButtonPrefs.h */; };
+		D2D8E776E42D3BFE2F6B6306 /* HTPressableButton.h in Headers */ = {isa = PBXBuildFile; fileRef = 7666432346B9CDD1802B6F65 /* HTPressableButton.h */; };
+		D43914103D5A54DDCD961A4D /* HTPressableButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E1E263DA09554F3FAF79619 /* HTPressableButton.m */; };
+		D770A08A497CD942697DD7F6 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 330E009D36E5C33D994ECEA1 /* Foundation.framework */; };
+		D82FB419AFD912B289A52752 /* Pods-BlockDump-HTPressableButton-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = CCE68A0DC51286855E4ABC22 /* Pods-BlockDump-HTPressableButton-dummy.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		963E8A7BA89901268FE1CB19 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9511C484349AA13C0F35FF92 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 60C1B67E883CFB2992E47F94;
+			remoteInfo = "Pods-BlockDump-HTPressableButton";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		135E481475D8BCF7F41D99BE /* libPods-BlockDump-HTPressableButton.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-BlockDump-HTPressableButton.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		1A9EA388A693B2666C260B6C /* Pods-BlockDump-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-BlockDump-acknowledgements.plist"; sourceTree = "<group>"; };
+		2379B0581905E1EC9B6658AE /* UIColor+HTColor.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIColor+HTColor.m"; path = "Classes/UIColor+HTColor.m"; sourceTree = "<group>"; };
+		25FC4594693C994F796EEA23 /* UIColor+HTColor.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIColor+HTColor.h"; path = "Classes/UIColor+HTColor.h"; sourceTree = "<group>"; };
+		2A75B2FF0E96EBC6E2A8B0AE /* HTPressableButtonPrefs.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = HTPressableButtonPrefs.m; path = Classes/HTPressableButtonPrefs.m; sourceTree = "<group>"; };
+		330E009D36E5C33D994ECEA1 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		37E9DFA104633E1B76A83158 /* Pods-BlockDump-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-BlockDump-dummy.m"; sourceTree = "<group>"; };
+		4426EEB9F7FA49C40D98574B /* Pods-BlockDump-HTPressableButton-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-BlockDump-HTPressableButton-prefix.pch"; sourceTree = "<group>"; };
+		44F1347BE6351DADD65A988B /* UIImage+HTButton.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIImage+HTButton.m"; path = "Classes/UIImage+HTButton.m"; sourceTree = "<group>"; };
+		4E1E263DA09554F3FAF79619 /* HTPressableButton.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = HTPressableButton.m; path = Classes/HTPressableButton.m; sourceTree = "<group>"; };
+		50F163938A6F5984D1324AA3 /* Podfile */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		5254A96A98A98076B88FF097 /* UIImage+HTButton.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIImage+HTButton.h"; path = "Classes/UIImage+HTButton.h"; sourceTree = "<group>"; };
+		5C99BEC724657E1E4CE36519 /* Pods-BlockDump-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-BlockDump-acknowledgements.markdown"; sourceTree = "<group>"; };
+		5CC947833D334414C0D9440B /* Pods-BlockDump.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-BlockDump.release.xcconfig"; sourceTree = "<group>"; };
+		7666432346B9CDD1802B6F65 /* HTPressableButton.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = HTPressableButton.h; path = Classes/HTPressableButton.h; sourceTree = "<group>"; };
+		790BED09695CA803F3928840 /* HTPressableButtonPrefs.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = HTPressableButtonPrefs.h; path = Classes/HTPressableButtonPrefs.h; sourceTree = "<group>"; };
+		85DD6F9FB00266C3940FA125 /* Pods-BlockDump-HTPressableButton.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-BlockDump-HTPressableButton.xcconfig"; sourceTree = "<group>"; };
+		B4A02B66F67010B267418582 /* Pods-BlockDump-environment.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-BlockDump-environment.h"; sourceTree = "<group>"; };
+		CCE68A0DC51286855E4ABC22 /* Pods-BlockDump-HTPressableButton-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-BlockDump-HTPressableButton-dummy.m"; sourceTree = "<group>"; };
+		D5663C33D88BA15F27DCA48E /* Pods-BlockDump.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-BlockDump.debug.xcconfig"; sourceTree = "<group>"; };
+		D7DC0B716C36EF7CB0555E1C /* Pods-BlockDump-HTPressableButton-Private.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-BlockDump-HTPressableButton-Private.xcconfig"; sourceTree = "<group>"; };
+		EB5E0CC733EC2FABDB92C070 /* libPods-BlockDump.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-BlockDump.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		FB2917C0D076C65058B70538 /* Pods-BlockDump-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-BlockDump-resources.sh"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		0377D250AC1F3C60ADF35246 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9BF4F27E89284EB26C8858CB /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6D842CA10D25CD2462D22455 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D770A08A497CD942697DD7F6 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		2F33C3178C8176EFAF58066E /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				EB5E0CC733EC2FABDB92C070 /* libPods-BlockDump.a */,
+				135E481475D8BCF7F41D99BE /* libPods-BlockDump-HTPressableButton.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		4825513410FBCD8CD3D44008 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				BF0E7C74B7A6C7A170965003 /* iOS */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		6D4BA81BE0D8C40A80464590 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				89C5EE8F987BF9246C8861FB /* HTPressableButton */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		781B22F64FA42D4261082529 /* All */ = {
+			isa = PBXGroup;
+			children = (
+				7666432346B9CDD1802B6F65 /* HTPressableButton.h */,
+				4E1E263DA09554F3FAF79619 /* HTPressableButton.m */,
+				790BED09695CA803F3928840 /* HTPressableButtonPrefs.h */,
+				2A75B2FF0E96EBC6E2A8B0AE /* HTPressableButtonPrefs.m */,
+				25FC4594693C994F796EEA23 /* UIColor+HTColor.h */,
+				2379B0581905E1EC9B6658AE /* UIColor+HTColor.m */,
+				5254A96A98A98076B88FF097 /* UIImage+HTButton.h */,
+				44F1347BE6351DADD65A988B /* UIImage+HTButton.m */,
+			);
+			name = All;
+			sourceTree = "<group>";
+		};
+		89C5EE8F987BF9246C8861FB /* HTPressableButton */ = {
+			isa = PBXGroup;
+			children = (
+				781B22F64FA42D4261082529 /* All */,
+				98E57753C620125583A0202B /* Support Files */,
+			);
+			path = HTPressableButton;
+			sourceTree = "<group>";
+		};
+		98E57753C620125583A0202B /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				85DD6F9FB00266C3940FA125 /* Pods-BlockDump-HTPressableButton.xcconfig */,
+				D7DC0B716C36EF7CB0555E1C /* Pods-BlockDump-HTPressableButton-Private.xcconfig */,
+				CCE68A0DC51286855E4ABC22 /* Pods-BlockDump-HTPressableButton-dummy.m */,
+				4426EEB9F7FA49C40D98574B /* Pods-BlockDump-HTPressableButton-prefix.pch */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/Pods-BlockDump-HTPressableButton";
+			sourceTree = "<group>";
+		};
+		BF0E7C74B7A6C7A170965003 /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				330E009D36E5C33D994ECEA1 /* Foundation.framework */,
+			);
+			name = iOS;
+			sourceTree = "<group>";
+		};
+		C0D9DDFBD898A6205EE313AE /* Targets Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				D6D7EB4753BB9139A85C0A8E /* Pods-BlockDump */,
+			);
+			name = "Targets Support Files";
+			sourceTree = "<group>";
+		};
+		D6D7EB4753BB9139A85C0A8E /* Pods-BlockDump */ = {
+			isa = PBXGroup;
+			children = (
+				5C99BEC724657E1E4CE36519 /* Pods-BlockDump-acknowledgements.markdown */,
+				1A9EA388A693B2666C260B6C /* Pods-BlockDump-acknowledgements.plist */,
+				37E9DFA104633E1B76A83158 /* Pods-BlockDump-dummy.m */,
+				B4A02B66F67010B267418582 /* Pods-BlockDump-environment.h */,
+				FB2917C0D076C65058B70538 /* Pods-BlockDump-resources.sh */,
+				D5663C33D88BA15F27DCA48E /* Pods-BlockDump.debug.xcconfig */,
+				5CC947833D334414C0D9440B /* Pods-BlockDump.release.xcconfig */,
+			);
+			name = "Pods-BlockDump";
+			path = "Target Support Files/Pods-BlockDump";
+			sourceTree = "<group>";
+		};
+		E1064248506017583DF341A2 = {
+			isa = PBXGroup;
+			children = (
+				50F163938A6F5984D1324AA3 /* Podfile */,
+				4825513410FBCD8CD3D44008 /* Frameworks */,
+				6D4BA81BE0D8C40A80464590 /* Pods */,
+				2F33C3178C8176EFAF58066E /* Products */,
+				C0D9DDFBD898A6205EE313AE /* Targets Support Files */,
+			);
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		004AE289F9E75E5A246A7465 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D2D8E776E42D3BFE2F6B6306 /* HTPressableButton.h in Headers */,
+				CA463DEF7DDD6395B1E3420A /* HTPressableButtonPrefs.h in Headers */,
+				57BF7674C4D820AD35AB80D8 /* UIColor+HTColor.h in Headers */,
+				AEF9516963B4E521DAAB04A0 /* UIImage+HTButton.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		60C1B67E883CFB2992E47F94 /* Pods-BlockDump-HTPressableButton */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = DE21DD65A82F9C8BA5545A80 /* Build configuration list for PBXNativeTarget "Pods-BlockDump-HTPressableButton" */;
+			buildPhases = (
+				4335F16491D81AD4A146DE79 /* Sources */,
+				6D842CA10D25CD2462D22455 /* Frameworks */,
+				004AE289F9E75E5A246A7465 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Pods-BlockDump-HTPressableButton";
+			productName = "Pods-BlockDump-HTPressableButton";
+			productReference = 135E481475D8BCF7F41D99BE /* libPods-BlockDump-HTPressableButton.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+		B3E9DC7341D2D63D3DCA994E /* Pods-BlockDump */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B5E6B7D48FA3BF7B4D27CF8B /* Build configuration list for PBXNativeTarget "Pods-BlockDump" */;
+			buildPhases = (
+				1D328A8D9E81DA6C04A36670 /* Sources */,
+				0377D250AC1F3C60ADF35246 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				CB77FD943576459556F414A3 /* PBXTargetDependency */,
+			);
+			name = "Pods-BlockDump";
+			productName = "Pods-BlockDump";
+			productReference = EB5E0CC733EC2FABDB92C070 /* libPods-BlockDump.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		9511C484349AA13C0F35FF92 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0510;
+			};
+			buildConfigurationList = A39FBC4775B988156DA962B7 /* Build configuration list for PBXProject "Pods" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = E1064248506017583DF341A2;
+			productRefGroup = 2F33C3178C8176EFAF58066E /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				B3E9DC7341D2D63D3DCA994E /* Pods-BlockDump */,
+				60C1B67E883CFB2992E47F94 /* Pods-BlockDump-HTPressableButton */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		1D328A8D9E81DA6C04A36670 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A7539D15516F51CB7DF2DD36 /* Pods-BlockDump-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4335F16491D81AD4A146DE79 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D43914103D5A54DDCD961A4D /* HTPressableButton.m in Sources */,
+				88727DB8CC3125654323E163 /* HTPressableButtonPrefs.m in Sources */,
+				D82FB419AFD912B289A52752 /* Pods-BlockDump-HTPressableButton-dummy.m in Sources */,
+				6E6792EA4A38EF6244993C2E /* UIColor+HTColor.m in Sources */,
+				3FF2DEB51844DDCAAC8273B3 /* UIImage+HTButton.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		CB77FD943576459556F414A3 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "Pods-BlockDump-HTPressableButton";
+			target = 60C1B67E883CFB2992E47F94 /* Pods-BlockDump-HTPressableButton */;
+			targetProxy = 963E8A7BA89901268FE1CB19 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		2C6902741609F5CE17B60616 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				ONLY_ACTIVE_ARCH = YES;
+				STRIP_INSTALLED_PRODUCT = NO;
+				SYMROOT = "${SRCROOT}/../build";
+			};
+			name = Debug;
+		};
+		37CB382A0834D7D4D9D242F3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5CC947833D334414C0D9440B /* Pods-BlockDump.release.xcconfig */;
+			buildSettings = {
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+		B46485828DBCF0D1F78E9A03 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = D5663C33D88BA15F27DCA48E /* Pods-BlockDump.debug.xcconfig */;
+			buildSettings = {
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		BAF14D0F40F32FD312E578C5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = D7DC0B716C36EF7CB0555E1C /* Pods-BlockDump-HTPressableButton-Private.xcconfig */;
+			buildSettings = {
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/Pods-BlockDump-HTPressableButton/Pods-BlockDump-HTPressableButton-prefix.pch";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+		D628F1D6CF981E4795C81D0E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_PREPROCESSOR_DEFINITIONS = "RELEASE=1";
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				STRIP_INSTALLED_PRODUCT = NO;
+				SYMROOT = "${SRCROOT}/../build";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		D94FA0611FFC0392953B28BF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = D7DC0B716C36EF7CB0555E1C /* Pods-BlockDump-HTPressableButton-Private.xcconfig */;
+			buildSettings = {
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/Pods-BlockDump-HTPressableButton/Pods-BlockDump-HTPressableButton-prefix.pch";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		A39FBC4775B988156DA962B7 /* Build configuration list for PBXProject "Pods" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2C6902741609F5CE17B60616 /* Debug */,
+				D628F1D6CF981E4795C81D0E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B5E6B7D48FA3BF7B4D27CF8B /* Build configuration list for PBXNativeTarget "Pods-BlockDump" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B46485828DBCF0D1F78E9A03 /* Debug */,
+				37CB382A0834D7D4D9D242F3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		DE21DD65A82F9C8BA5545A80 /* Build configuration list for PBXNativeTarget "Pods-BlockDump-HTPressableButton" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D94FA0611FFC0392953B28BF /* Debug */,
+				BAF14D0F40F32FD312E578C5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 9511C484349AA13C0F35FF92 /* Project object */;
+}
