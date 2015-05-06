@@ -6,11 +6,11 @@
 //  Copyright (c) 2015 cyberplays. All rights reserved.
 //
 
-#import "ViewController.h"
+#import "StartViewController.h"
 #import "HTPressableButton.h"
 #import "UIColor+HTColor.h"
 
-@interface ViewController ()
+@interface StartViewController ()
 
 @property (weak, nonatomic) IBOutlet HTPressableButton *playButton;
 @property (weak, nonatomic) IBOutlet HTPressableButton *hiscoreButton;
@@ -19,7 +19,7 @@
 
 @end
 
-@implementation ViewController
+@implementation StartViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -39,7 +39,7 @@
     [playButton addTarget:self action:@selector(holdDown:) forControlEvents:UIControlEventTouchDragInside];
 
     
-    // Rounded Play button
+    // Rounded Leaderboards button
     CGRect frame2 = CGRectMake(200, 180, 120, 120);
     HTPressableButton *hiscoreButton = [[HTPressableButton alloc] initWithFrame:frame2 buttonStyle:HTPressableButtonStyleRounded];
     [hiscoreButton setTag:2];
@@ -53,7 +53,7 @@
     [hiscoreButton addTarget:self action:@selector(holdDown:) forControlEvents:UIControlEventTouchDragInside];
 
     
-    // Rounded Play button
+    // Rounded Statistics button
     CGRect frame3 = CGRectMake(50, 330, 120, 120);
     HTPressableButton *statsButton = [[HTPressableButton alloc] initWithFrame:frame3 buttonStyle:HTPressableButtonStyleRounded];
     [statsButton setTag:3];
@@ -67,7 +67,7 @@
     [statsButton addTarget:self action:@selector(holdDown:) forControlEvents:UIControlEventTouchDragInside];
 
     
-    // Rounded Play button
+    // Rounded Intro button
     CGRect frame4 = CGRectMake(200, 330, 120, 120);
     HTPressableButton *howtoButton = [[HTPressableButton alloc] initWithFrame:frame4 buttonStyle:HTPressableButtonStyleRounded];
     [howtoButton setTag:4];
@@ -100,6 +100,7 @@
             break;
         case 2:
             tmp.imageEdgeInsets = UIEdgeInsetsMake(28, 16, 16, 16);
+            
             NSLog(@"Hold down button #2");
             break;
         case 3:
@@ -120,29 +121,33 @@
 - (IBAction)holdRelease:(id) sender
 {
     //Move image up with button release
-    /*HTPressableButton *tmp = sender;
+    HTPressableButton *tmp = sender;
     switch (tmp.tag) {
         case 1:
             tmp.imageEdgeInsets = UIEdgeInsetsMake(0, 0, 12, 0);
             NSLog(@"Hold release button #1");
+            [self performSegueWithIdentifier:@"playSeg" sender:self];
             break;
         case 2:
             tmp.imageEdgeInsets = UIEdgeInsetsMake(100, 160, 280, 160);
             NSLog(@"Hold release button #2");
+            [self performSegueWithIdentifier:@"leaderSeg" sender:self];
             break;
         case 3:
             tmp.imageEdgeInsets = UIEdgeInsetsMake(16, 16, 28, 16);
             NSLog(@"Hold release button #3");
+            [self performSegueWithIdentifier:@"statSeg" sender:self];
             break;
         case 4:
             tmp.imageEdgeInsets = UIEdgeInsetsMake(12, 12, 24, 12);
             NSLog(@"Hold release button #4");
+            [self performSegueWithIdentifier:@"tutorialSeg" sender:self];
             break;
         default:
             tmp.imageEdgeInsets = UIEdgeInsetsMake(0, 0, 12, 0);
             NSLog(@"Hold release button default");
             break;
-    }*/
+    }
 }
 
 

@@ -7,10 +7,20 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2260BCB11AEC155F00CD8F8D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9B74A5A41AE5FFFA00946788 /* Main.storyboard */; };
+		2260BCB41AEC57CC00CD8F8D /* PlayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2260BCB31AEC57CC00CD8F8D /* PlayViewController.m */; };
+		2260BCB71AEC5A5700CD8F8D /* StatViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2260BCB61AEC5A5700CD8F8D /* StatViewController.m */; };
+		2260BCBA1AEC5A8900CD8F8D /* LeaderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2260BCB91AEC5A8900CD8F8D /* LeaderViewController.m */; };
+		2260BCBD1AEC5AD300CD8F8D /* TutorialViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2260BCBC1AEC5AD300CD8F8D /* TutorialViewController.m */; };
+		2260BCC01AEC652800CD8F8D /* PlayView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2260BCBF1AEC652800CD8F8D /* PlayView.m */; };
+		2260BCC21AEDB50500CD8F8D /* radiobox-blank.png in Resources */ = {isa = PBXBuildFile; fileRef = 2260BCC11AEDB50500CD8F8D /* radiobox-blank.png */; };
+		22C5CC341AF95B2A00E54B10 /* circle.png in Resources */ = {isa = PBXBuildFile; fileRef = 22C5CC331AF95B2A00E54B10 /* circle.png */; };
+		22C5CC361AF961A600E54B10 /* square.png in Resources */ = {isa = PBXBuildFile; fileRef = 22C5CC351AF961A600E54B10 /* square.png */; };
+		22C5CC381AF9698F00E54B10 /* circle2.png in Resources */ = {isa = PBXBuildFile; fileRef = 22C5CC371AF9698F00E54B10 /* circle2.png */; };
+		7E7AED766D4607655ADB323D /* libPods-BlockDumpTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 41A3694AF500F8118D5D1E9A /* libPods-BlockDumpTests.a */; };
 		9B74A59D1AE5FFFA00946788 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B74A59C1AE5FFFA00946788 /* main.m */; };
 		9B74A5A01AE5FFFA00946788 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B74A59F1AE5FFFA00946788 /* AppDelegate.m */; };
-		9B74A5A31AE5FFFA00946788 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B74A5A21AE5FFFA00946788 /* ViewController.m */; };
-		9B74A5A61AE5FFFA00946788 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9B74A5A41AE5FFFA00946788 /* Main.storyboard */; };
+		9B74A5A31AE5FFFA00946788 /* StartViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B74A5A21AE5FFFA00946788 /* StartViewController.m */; };
 		9B74A5A81AE5FFFA00946788 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9B74A5A71AE5FFFA00946788 /* Images.xcassets */; };
 		9B74A5AB1AE5FFFA00946788 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9B74A5A91AE5FFFA00946788 /* LaunchScreen.xib */; };
 		9B74A5B71AE5FFFB00946788 /* BlockDumpTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B74A5B61AE5FFFB00946788 /* BlockDumpTests.m */; };
@@ -20,7 +30,6 @@
 		9BA6E1151AE608B000D7B03E /* ic_howto.png in Resources */ = {isa = PBXBuildFile; fileRef = 9BA6E10F1AE608B000D7B03E /* ic_howto.png */; };
 		9BA6E1161AE608B000D7B03E /* ic_play.png in Resources */ = {isa = PBXBuildFile; fileRef = 9BA6E1101AE608B000D7B03E /* ic_play.png */; };
 		9BA6E1171AE608B000D7B03E /* ic_play.png in Resources */ = {isa = PBXBuildFile; fileRef = 9BA6E1101AE608B000D7B03E /* ic_play.png */; };
-		9BA6E11A1AE62ADE00D7B03E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9B74A5A41AE5FFFA00946788 /* Main.storyboard */; };
 		9BA6E1201AE6B5AC00D7B03E /* ic_stats.png in Resources */ = {isa = PBXBuildFile; fileRef = 9BA6E11F1AE6B5AC00D7B03E /* ic_stats.png */; };
 		9BA6E1211AE6B5AC00D7B03E /* ic_stats.png in Resources */ = {isa = PBXBuildFile; fileRef = 9BA6E11F1AE6B5AC00D7B03E /* ic_stats.png */; };
 		9BA6E1231AE6B82900D7B03E /* ic_hiscore2.png in Resources */ = {isa = PBXBuildFile; fileRef = 9BA6E1221AE6B82900D7B03E /* ic_hiscore2.png */; };
@@ -42,14 +51,29 @@
 
 /* Begin PBXFileReference section */
 		1CF208A50012C532C5C9063C /* Pods-BlockDump.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BlockDump.release.xcconfig"; path = "Pods/Target Support Files/Pods-BlockDump/Pods-BlockDump.release.xcconfig"; sourceTree = "<group>"; };
+		2260BCB21AEC57CC00CD8F8D /* PlayViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayViewController.h; sourceTree = "<group>"; };
+		2260BCB31AEC57CC00CD8F8D /* PlayViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayViewController.m; sourceTree = "<group>"; };
+		2260BCB51AEC5A5700CD8F8D /* StatViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StatViewController.h; sourceTree = "<group>"; };
+		2260BCB61AEC5A5700CD8F8D /* StatViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StatViewController.m; sourceTree = "<group>"; };
+		2260BCB81AEC5A8900CD8F8D /* LeaderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeaderViewController.h; sourceTree = "<group>"; };
+		2260BCB91AEC5A8900CD8F8D /* LeaderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LeaderViewController.m; sourceTree = "<group>"; };
+		2260BCBB1AEC5AD300CD8F8D /* TutorialViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TutorialViewController.h; sourceTree = "<group>"; };
+		2260BCBC1AEC5AD300CD8F8D /* TutorialViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TutorialViewController.m; sourceTree = "<group>"; };
+		2260BCBE1AEC652800CD8F8D /* PlayView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayView.h; sourceTree = "<group>"; };
+		2260BCBF1AEC652800CD8F8D /* PlayView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayView.m; sourceTree = "<group>"; };
+		2260BCC11AEDB50500CD8F8D /* radiobox-blank.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "radiobox-blank.png"; sourceTree = "<group>"; };
+		22C5CC331AF95B2A00E54B10 /* circle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = circle.png; sourceTree = "<group>"; };
+		22C5CC351AF961A600E54B10 /* square.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = square.png; sourceTree = "<group>"; };
+		22C5CC371AF9698F00E54B10 /* circle2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = circle2.png; sourceTree = "<group>"; };
+		41A3694AF500F8118D5D1E9A /* libPods-BlockDumpTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-BlockDumpTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		938AC717CC394E14C083913E /* Pods-BlockDump.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BlockDump.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BlockDump/Pods-BlockDump.debug.xcconfig"; sourceTree = "<group>"; };
 		9B74A5971AE5FFFA00946788 /* BlockDump.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BlockDump.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9B74A59B1AE5FFFA00946788 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9B74A59C1AE5FFFA00946788 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		9B74A59E1AE5FFFA00946788 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		9B74A59F1AE5FFFA00946788 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		9B74A5A11AE5FFFA00946788 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		9B74A5A21AE5FFFA00946788 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		9B74A5A11AE5FFFA00946788 /* StartViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = StartViewController.h; sourceTree = "<group>"; };
+		9B74A5A21AE5FFFA00946788 /* StartViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = StartViewController.m; sourceTree = "<group>"; };
 		9B74A5A51AE5FFFA00946788 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		9B74A5A71AE5FFFA00946788 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		9B74A5AA1AE5FFFA00946788 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
@@ -59,11 +83,12 @@
 		9BA6E10E1AE608B000D7B03E /* ic_hiscore.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_hiscore.png; sourceTree = "<group>"; };
 		9BA6E10F1AE608B000D7B03E /* ic_howto.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_howto.png; sourceTree = "<group>"; };
 		9BA6E1101AE608B000D7B03E /* ic_play.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_play.png; sourceTree = "<group>"; };
-		9BA6E11E1AE62D4600D7B03E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
 		9BA6E11F1AE6B5AC00D7B03E /* ic_stats.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_stats.png; sourceTree = "<group>"; };
 		9BA6E1221AE6B82900D7B03E /* ic_hiscore2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_hiscore2.png; sourceTree = "<group>"; };
 		9BA6E1251AE6B84200D7B03E /* ic_howto2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_howto2.png; sourceTree = "<group>"; };
 		E589B9A5D1F2A5C6F3BA1626 /* libPods-BlockDump.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-BlockDump.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		FC3A00847CE26BA594665665 /* Pods-BlockDumpTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BlockDumpTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-BlockDumpTests/Pods-BlockDumpTests.release.xcconfig"; sourceTree = "<group>"; };
+		FCD3AE27118EDECCF1F17F76 /* Pods-BlockDumpTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BlockDumpTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BlockDumpTests/Pods-BlockDumpTests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,6 +104,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7E7AED766D4607655ADB323D /* libPods-BlockDumpTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -89,6 +115,7 @@
 			isa = PBXGroup;
 			children = (
 				E589B9A5D1F2A5C6F3BA1626 /* libPods-BlockDump.a */,
+				41A3694AF500F8118D5D1E9A /* libPods-BlockDumpTests.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -118,9 +145,19 @@
 			children = (
 				9B74A59E1AE5FFFA00946788 /* AppDelegate.h */,
 				9B74A59F1AE5FFFA00946788 /* AppDelegate.m */,
-				9B74A5A11AE5FFFA00946788 /* ViewController.h */,
-				9B74A5A21AE5FFFA00946788 /* ViewController.m */,
+				9B74A5A11AE5FFFA00946788 /* StartViewController.h */,
+				9B74A5A21AE5FFFA00946788 /* StartViewController.m */,
 				9B74A5A41AE5FFFA00946788 /* Main.storyboard */,
+				2260BCBE1AEC652800CD8F8D /* PlayView.h */,
+				2260BCBF1AEC652800CD8F8D /* PlayView.m */,
+				2260BCBB1AEC5AD300CD8F8D /* TutorialViewController.h */,
+				2260BCBC1AEC5AD300CD8F8D /* TutorialViewController.m */,
+				2260BCB81AEC5A8900CD8F8D /* LeaderViewController.h */,
+				2260BCB91AEC5A8900CD8F8D /* LeaderViewController.m */,
+				2260BCB51AEC5A5700CD8F8D /* StatViewController.h */,
+				2260BCB61AEC5A5700CD8F8D /* StatViewController.m */,
+				2260BCB21AEC57CC00CD8F8D /* PlayViewController.h */,
+				2260BCB31AEC57CC00CD8F8D /* PlayViewController.m */,
 				9B74A5A71AE5FFFA00946788 /* Images.xcassets */,
 				9B74A5A91AE5FFFA00946788 /* LaunchScreen.xib */,
 				9B74A59A1AE5FFFA00946788 /* Supporting Files */,
@@ -131,6 +168,10 @@
 		9B74A59A1AE5FFFA00946788 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				2260BCC11AEDB50500CD8F8D /* radiobox-blank.png */,
+				22C5CC351AF961A600E54B10 /* square.png */,
+				22C5CC371AF9698F00E54B10 /* circle2.png */,
+				22C5CC331AF95B2A00E54B10 /* circle.png */,
 				9BA6E1251AE6B84200D7B03E /* ic_howto2.png */,
 				9BA6E1221AE6B82900D7B03E /* ic_hiscore2.png */,
 				9BA6E11F1AE6B5AC00D7B03E /* ic_stats.png */,
@@ -165,6 +206,8 @@
 			children = (
 				938AC717CC394E14C083913E /* Pods-BlockDump.debug.xcconfig */,
 				1CF208A50012C532C5C9063C /* Pods-BlockDump.release.xcconfig */,
+				FCD3AE27118EDECCF1F17F76 /* Pods-BlockDumpTests.debug.xcconfig */,
+				FC3A00847CE26BA594665665 /* Pods-BlockDumpTests.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -195,9 +238,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 9B74A5BD1AE5FFFB00946788 /* Build configuration list for PBXNativeTarget "BlockDumpTests" */;
 			buildPhases = (
+				F644BAAF762C1805247D1F2B /* Check Pods Manifest.lock */,
 				9B74A5AC1AE5FFFA00946788 /* Sources */,
 				9B74A5AD1AE5FFFA00946788 /* Frameworks */,
 				9B74A5AE1AE5FFFA00946788 /* Resources */,
+				3D25E9CE2D50BBEB7F18B2AB /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -254,11 +299,15 @@
 				9BA6E1231AE6B82900D7B03E /* ic_hiscore2.png in Resources */,
 				9BA6E1141AE608B000D7B03E /* ic_howto.png in Resources */,
 				9BA6E1161AE608B000D7B03E /* ic_play.png in Resources */,
-				9B74A5A61AE5FFFA00946788 /* Main.storyboard in Resources */,
 				9BA6E1261AE6B84200D7B03E /* ic_howto2.png in Resources */,
+				22C5CC341AF95B2A00E54B10 /* circle.png in Resources */,
 				9BA6E1201AE6B5AC00D7B03E /* ic_stats.png in Resources */,
 				9BA6E1121AE608B000D7B03E /* ic_hiscore.png in Resources */,
+				2260BCC21AEDB50500CD8F8D /* radiobox-blank.png in Resources */,
+				22C5CC381AF9698F00E54B10 /* circle2.png in Resources */,
+				2260BCB11AEC155F00CD8F8D /* Main.storyboard in Resources */,
 				9B74A5AB1AE5FFFA00946788 /* LaunchScreen.xib in Resources */,
+				22C5CC361AF961A600E54B10 /* square.png in Resources */,
 				9B74A5A81AE5FFFA00946788 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -269,7 +318,6 @@
 			files = (
 				9BA6E1131AE608B000D7B03E /* ic_hiscore.png in Resources */,
 				9BA6E1271AE6B84200D7B03E /* ic_howto2.png in Resources */,
-				9BA6E11A1AE62ADE00D7B03E /* Main.storyboard in Resources */,
 				9BA6E1241AE6B82900D7B03E /* ic_hiscore2.png in Resources */,
 				9BA6E1171AE608B000D7B03E /* ic_play.png in Resources */,
 				9BA6E1151AE608B000D7B03E /* ic_howto.png in Resources */,
@@ -280,7 +328,37 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		3D25E9CE2D50BBEB7F18B2AB /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-BlockDumpTests/Pods-BlockDumpTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		9BAE1C0E3BBC38ED8C558A22 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		F644BAAF762C1805247D1F2B /* Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -317,8 +395,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9B74A5A31AE5FFFA00946788 /* ViewController.m in Sources */,
+				2260BCBD1AEC5AD300CD8F8D /* TutorialViewController.m in Sources */,
+				2260BCB41AEC57CC00CD8F8D /* PlayViewController.m in Sources */,
+				9B74A5A31AE5FFFA00946788 /* StartViewController.m in Sources */,
+				2260BCB71AEC5A5700CD8F8D /* StatViewController.m in Sources */,
+				2260BCBA1AEC5A8900CD8F8D /* LeaderViewController.m in Sources */,
 				9B74A5A01AE5FFFA00946788 /* AppDelegate.m in Sources */,
+				2260BCC01AEC652800CD8F8D /* PlayView.m in Sources */,
 				9B74A59D1AE5FFFA00946788 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -346,7 +429,6 @@
 			isa = PBXVariantGroup;
 			children = (
 				9B74A5A51AE5FFFA00946788 /* Base */,
-				9BA6E11E1AE62D4600D7B03E /* en */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -466,6 +548,7 @@
 		};
 		9B74A5BE1AE5FFFB00946788 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = FCD3AE27118EDECCF1F17F76 /* Pods-BlockDumpTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				FRAMEWORK_SEARCH_PATHS = (
@@ -485,6 +568,7 @@
 		};
 		9B74A5BF1AE5FFFB00946788 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = FC3A00847CE26BA594665665 /* Pods-BlockDumpTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				FRAMEWORK_SEARCH_PATHS = (
