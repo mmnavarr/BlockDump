@@ -18,12 +18,13 @@
     
     AVAudioPlayer *blockEaten;
     AVAudioPlayer *gameEnded;
-    
-    
+    NSMutableArray *spriteNames;
 }
 
 @property(strong, nonatomic) IBOutlet UILabel *scoreLabel;
 @property(strong, nonatomic) IBOutlet UILabel *timeLabel;
+@property(strong, nonatomic) UIImageView * characterView;
 @property(strong, nonatomic) CLLocation *userLocation;
+@property(strong, nonatomic) NSTimer * timer;
 
 @end
