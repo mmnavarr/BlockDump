@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		22352E0A1AFA90020045A034 /* character.png in Resources */ = {isa = PBXBuildFile; fileRef = 22352E091AFA90020045A034 /* character.png */; };
+		22352E0F1AFAC8EE0045A034 /* triangle_sprite.png in Resources */ = {isa = PBXBuildFile; fileRef = 22352E0B1AFAC8EE0045A034 /* triangle_sprite.png */; };
+		22352E101AFAC8EE0045A034 /* circle_sprite.png in Resources */ = {isa = PBXBuildFile; fileRef = 22352E0C1AFAC8EE0045A034 /* circle_sprite.png */; };
+		22352E111AFAC8EE0045A034 /* hex_sprite.png in Resources */ = {isa = PBXBuildFile; fileRef = 22352E0D1AFAC8EE0045A034 /* hex_sprite.png */; };
+		22352E121AFAC8EE0045A034 /* star_sprite.png in Resources */ = {isa = PBXBuildFile; fileRef = 22352E0E1AFAC8EE0045A034 /* star_sprite.png */; };
 		2260BCB11AEC155F00CD8F8D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9B74A5A41AE5FFFA00946788 /* Main.storyboard */; };
 		2260BCB41AEC57CC00CD8F8D /* PlayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2260BCB31AEC57CC00CD8F8D /* PlayViewController.m */; };
 		2260BCB71AEC5A5700CD8F8D /* StatViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2260BCB61AEC5A5700CD8F8D /* StatViewController.m */; };
@@ -53,6 +57,10 @@
 /* Begin PBXFileReference section */
 		1CF208A50012C532C5C9063C /* Pods-BlockDump.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BlockDump.release.xcconfig"; path = "Pods/Target Support Files/Pods-BlockDump/Pods-BlockDump.release.xcconfig"; sourceTree = "<group>"; };
 		22352E091AFA90020045A034 /* character.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = character.png; sourceTree = "<group>"; };
+		22352E0B1AFAC8EE0045A034 /* triangle_sprite.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = triangle_sprite.png; sourceTree = "<group>"; };
+		22352E0C1AFAC8EE0045A034 /* circle_sprite.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = circle_sprite.png; sourceTree = "<group>"; };
+		22352E0D1AFAC8EE0045A034 /* hex_sprite.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hex_sprite.png; sourceTree = "<group>"; };
+		22352E0E1AFAC8EE0045A034 /* star_sprite.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = star_sprite.png; sourceTree = "<group>"; };
 		2260BCB21AEC57CC00CD8F8D /* PlayViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayViewController.h; sourceTree = "<group>"; };
 		2260BCB31AEC57CC00CD8F8D /* PlayViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayViewController.m; sourceTree = "<group>"; };
 		2260BCB51AEC5A5700CD8F8D /* StatViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StatViewController.h; sourceTree = "<group>"; };
@@ -174,6 +182,10 @@
 				22352E091AFA90020045A034 /* character.png */,
 				22C5CC351AF961A600E54B10 /* square.png */,
 				22C5CC371AF9698F00E54B10 /* circle2.png */,
+				22352E0B1AFAC8EE0045A034 /* triangle_sprite.png */,
+				22352E0C1AFAC8EE0045A034 /* circle_sprite.png */,
+				22352E0D1AFAC8EE0045A034 /* hex_sprite.png */,
+				22352E0E1AFAC8EE0045A034 /* star_sprite.png */,
 				22C5CC331AF95B2A00E54B10 /* circle.png */,
 				9BA6E1251AE6B84200D7B03E /* ic_howto2.png */,
 				9BA6E1221AE6B82900D7B03E /* ic_hiscore2.png */,
@@ -302,14 +314,18 @@
 				9BA6E1231AE6B82900D7B03E /* ic_hiscore2.png in Resources */,
 				9BA6E1141AE608B000D7B03E /* ic_howto.png in Resources */,
 				9BA6E1161AE608B000D7B03E /* ic_play.png in Resources */,
+				22352E111AFAC8EE0045A034 /* hex_sprite.png in Resources */,
 				9BA6E1261AE6B84200D7B03E /* ic_howto2.png in Resources */,
 				22C5CC341AF95B2A00E54B10 /* circle.png in Resources */,
+				22352E121AFAC8EE0045A034 /* star_sprite.png in Resources */,
 				9BA6E1201AE6B5AC00D7B03E /* ic_stats.png in Resources */,
 				9BA6E1121AE608B000D7B03E /* ic_hiscore.png in Resources */,
 				2260BCC21AEDB50500CD8F8D /* radiobox-blank.png in Resources */,
+				22352E0F1AFAC8EE0045A034 /* triangle_sprite.png in Resources */,
 				22C5CC381AF9698F00E54B10 /* circle2.png in Resources */,
 				2260BCB11AEC155F00CD8F8D /* Main.storyboard in Resources */,
 				9B74A5AB1AE5FFFA00946788 /* LaunchScreen.xib in Resources */,
+				22352E101AFAC8EE0045A034 /* circle_sprite.png in Resources */,
 				22352E0A1AFA90020045A034 /* character.png in Resources */,
 				22C5CC361AF961A600E54B10 /* square.png in Resources */,
 				9B74A5A81AE5FFFA00946788 /* Images.xcassets in Resources */,
