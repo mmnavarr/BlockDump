@@ -16,6 +16,7 @@
 
 @synthesize scoreLabel = _scoreLabel;
 @synthesize timeLabel = _timeLabel;
+@synthesize userLocation;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -26,17 +27,33 @@
     CGFloat h = CGRectGetHeight(bounds);
     
     //add the rotation image
-    
     UIImageView *rotationView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"circle2"]];
-    [rotationView setBounds:CGRectMake(w/2.4f, h-85.0f, w/6.0f, h/11.0f)];
+    [rotationView setBounds:CGRectMake(0, 0, w/6.0f, h/11.0f)];
     [rotationView setCenter:CGPointMake(w/2.0f, h-60.0f)];
-    
     [rotationView setUserInteractionEnabled:YES];
+    
+    //rotation gesture recognizer
     UIRotationGestureRecognizer *rtn = [[UIRotationGestureRecognizer alloc]initWithTarget:self action:@selector(handleRotation:)];
     [rtn setDelegate:self];
+    
+    //add the gesture recognizer to rotation view
     [rotationView addGestureRecognizer:rtn];
     
+    //add the main player sprite
+    UIImageView *characterView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"character"]];
+    [characterView setBounds:CGRectMake(0,0, w/8.0f, h/12.0f)];
+    [characterView setCenter:self.view.center];
+    [characterView setUserInteractionEnabled:YES];
+    
+    //add gesture recognizer to character
+    [characterView addGestureRecognizer:rtn];
+    
+    [self.view addSubview:characterView];
     [self.view addSubview:rotationView];
+    
+    NSLog(@"latitude %+.6f, longitude %+.6f\n", // debugging location
+          userLocation.coordinate.latitude,
+          userLocation.coordinate.longitude);
     
 }
 
@@ -58,6 +75,11 @@
         [recognizer setRotation:0];
     }
     
+}
+
+- (void) setLocation:(CLLocation *) location {
+    userLocation = [[CLLocation alloc] init];
+    userLocation = location;
 }
 
 

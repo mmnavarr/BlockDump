@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+@import CoreLocation;
 
 @interface LeaderViewController : UIViewController
+
+@property(strong, nonatomic) CLLocation *userLocation;
 
 @end

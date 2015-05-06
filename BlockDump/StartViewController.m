@@ -7,8 +7,11 @@
 //
 
 #import "StartViewController.h"
+#import "LeaderViewController.h"
+#import "PlayViewController.h"
 #import "HTPressableButton.h"
 #import "UIColor+HTColor.h"
+
 
 @interface StartViewController ()
 
@@ -21,9 +24,19 @@
 
 @implementation StartViewController
 
+@synthesize userLocation;
+@synthesize locationManager;
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
+    
+    NSLog(@"latitude %+.6f, longitude %+.6f\n",
+          userLocation.coordinate.latitude,
+          userLocation.coordinate.longitude);
+    
+    [self startLocationManager]; //start location manager to get location for leaderboards
+    
     
     // Rounded Play button
     CGRect frame1 = CGRectMake(50, 180, 120, 120);
@@ -126,21 +139,25 @@
         case 1:
             tmp.imageEdgeInsets = UIEdgeInsetsMake(0, 0, 12, 0);
             NSLog(@"Hold release button #1");
+            [locationManager stopUpdatingLocation];
             [self performSegueWithIdentifier:@"playSeg" sender:self];
             break;
         case 2:
             tmp.imageEdgeInsets = UIEdgeInsetsMake(100, 160, 280, 160);
             NSLog(@"Hold release button #2");
+            [locationManager stopUpdatingLocation];
             [self performSegueWithIdentifier:@"leaderSeg" sender:self];
             break;
         case 3:
             tmp.imageEdgeInsets = UIEdgeInsetsMake(16, 16, 28, 16);
             NSLog(@"Hold release button #3");
+            [locationManager stopUpdatingLocation];
             [self performSegueWithIdentifier:@"statSeg" sender:self];
             break;
         case 4:
             tmp.imageEdgeInsets = UIEdgeInsetsMake(12, 12, 24, 12);
             NSLog(@"Hold release button #4");
+            [locationManager stopUpdatingLocation];
             [self performSegueWithIdentifier:@"tutorialSeg" sender:self];
             break;
         default:
@@ -159,6 +176,50 @@
 + (CGFloat) window_width   {
     return [UIScreen mainScreen].applicationFrame.size.width;
 }
+
+- (void) startLocationManager{
+    userLocation = [[CLLocation alloc] init];
+    
+    locationManager = [[CLLocationManager alloc] init];
+    //[locationManager locationServicesEnabled]; // deprecated?
+    locationManager.delegate = self;
+    locationManager.desiredAccuracy = kCLLocationAccuracyKilometer;
+    locationManager.distanceFilter = 500; // meters
+    
+    [locationManager startUpdatingLocation];
+}
+
+// Delegate method from the CLLocationManagerDelegate protocol.
+- (void)locationManager:(CLLocationManager *)manager
+     didUpdateLocations:(NSArray *)locations {
+    // If it's a relatively recent event, turn off updates to save power.
+    CLLocation* location = [locations lastObject];
+    NSDate* eventDate = location.timestamp;
+    NSTimeInterval howRecent = [eventDate timeIntervalSinceNow];
+    if (fabs(howRecent) < 15.0) {
+        // If the event is recent, do something with it.
+        NSLog(@"latitude %+.6f, longitude %+.6f\n",
+              location.coordinate.latitude,
+              location.coordinate.longitude);
+        userLocation = location;
+        
+    }
+}
+ 
+
+ - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+     
+     if ([segue.identifier isEqualToString:@"playSeg"]){
+         PlayViewController *destViewController = segue.destinationViewController;
+         destViewController.userLocation = self.userLocation;
+     }
+     else if ([segue.identifier isEqualToString:@"leaderSeg"]){
+         LeaderViewController *destViewController = segue.destinationViewController;
+         destViewController.userLocation = self.userLocation;
+     }
+     
+ }
+
 
 
 - (void)didReceiveMemoryWarning {
