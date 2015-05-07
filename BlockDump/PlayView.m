@@ -36,6 +36,10 @@
     [[UIColor grayColor] setStroke];             // use gray as stroke color
     CGContextDrawPath( context, kCGPathStroke );
     
+    CGRect box = CGRectMake(50, 150, 275, 417);//make it look nice
+    [[UIColor whiteColor] set];
+    UIRectFill(box);
+    
     
 }
 

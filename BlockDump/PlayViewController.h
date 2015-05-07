@@ -15,10 +15,21 @@
     int score;
     int blocksEaten;
     float timeLeft;
+    int secondCount;
+    
+    CGFloat gridW;
+    CGFloat gridH;
+    CGFloat toW;
+    CGFloat toH;
+    CGPoint topLeft;
+    CGPoint topRight;
+    CGPoint bottomLeft;
+    CGPoint bottomRight;
     
     AVAudioPlayer *blockEaten;
     AVAudioPlayer *gameEnded;
     NSMutableArray *spriteNames;
+    NSMutableArray *spriteViews;
 }
 
 @property(strong, nonatomic) IBOutlet UILabel *scoreLabel;
