@@ -39,7 +39,7 @@
     [spriteNames addObject:@"hex_sprite"];
     [spriteNames addObject:@"star_sprite"];
     
-    timeLeft = 5.0;
+    timeLeft = 60.0;
     
     //height and width of the screen
     CGFloat w = CGRectGetWidth(self.view.bounds);
@@ -460,7 +460,7 @@
 - (void) alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex   {
     NSString *title = [alertView buttonTitleAtIndex:buttonIndex];
     if ([title isEqualToString:@"Restart"]){
-        //[self.view setNeedsDisplay];
+        
         [self restart];
     }
     else if ([title isEqualToString:@"Leaderboards"]){
@@ -473,7 +473,7 @@
 
 - (void) restart {
     
-    /*[spriteViews removeAllObjects];
+    [spriteViews removeAllObjects];
     timeLeft = 60;
     score = 0;
     _timeLabel.text = [NSString stringWithFormat:@"Time: %is", (int)timeLeft];
@@ -484,7 +484,7 @@
                                              target:self
                                            selector:@selector(updateLabel:)
                                            userInfo:nil
-                                            repeats:YES];*/
+                                            repeats:YES];
 }
 /*
 #pragma mark - Navigation
