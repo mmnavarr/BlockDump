@@ -10,4 +10,11 @@
 
 @interface StatViewController : UIViewController
 
+@property(strong, nonatomic) IBOutlet UILabel *highscoreLabel;
+@property(strong, nonatomic) IBOutlet UILabel *tscoreLabel;
+@property(strong, nonatomic) IBOutlet UILabel *avgscoreLabel;
+@property(strong, nonatomic) IBOutlet UILabel *tgamesLabel;
+@property(strong, nonatomic) IBOutlet UILabel *ttimeLabel;
+@property(strong, nonatomic) IBOutlet UILabel *tspritesLabel;
+
 @end

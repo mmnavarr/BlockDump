@@ -6,16 +6,17 @@
 //  Copyright (c) 2015 cyberplays. All rights reserved.
 //
 
+#import "Player.h"
 #import <UIKit/UIKit.h>
 @import CoreLocation;
 
 @interface StartViewController : UIViewController <CLLocationManagerDelegate>
-{
-    
+{    
 }
 
 @property (nonatomic, strong) CLLocation *userLocation;
 @property (nonatomic, strong) CLLocationManager *locationManager;
+@property (nonatomic) Player *thePlayer;
 
 @end
 
