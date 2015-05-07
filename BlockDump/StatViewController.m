@@ -24,12 +24,23 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [[self navigationController] setNavigationBarHidden:NO animated:YES];
     
-    StartViewController *startView = [[StartViewController alloc] init];
+    //GET PLAYER FROM STARTVIEWCONTROLLER
+    /*StartViewController *startView = [[StartViewController alloc] init];
     Player *player = startView.thePlayer;
-    NSLog(@"The players name: %@", player.name);
+    NSLog(@"The players name: %@", player.name);*/
     
-    [self setLabels:(Player *) player];
+    //INITIALIZE PLAYER
+    Player *thePlayer = [[Player alloc] init];
+    thePlayer.name = @"The Player";
+    [thePlayer addScore:201050];
+    [thePlayer addScore:408300];
+    [thePlayer addScore:619020];
+    thePlayer.totalTime = 206;
+    thePlayer.totalConsumed = 1013;
+    
+    [self setLabels:(Player *) thePlayer];
 }
 
 - (void)didReceiveMemoryWarning {

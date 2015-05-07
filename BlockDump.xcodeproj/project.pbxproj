@@ -28,6 +28,8 @@
 		9B50FB981AFB988A002EF6E2 /* CustomCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9B50FB971AFB9889002EF6E2 /* CustomCell.xib */; };
 		9B50FB991AFB988A002EF6E2 /* CustomCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9B50FB971AFB9889002EF6E2 /* CustomCell.xib */; };
 		9B50FB9C1AFB99DF002EF6E2 /* CustomCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B50FB9B1AFB99DF002EF6E2 /* CustomCell.m */; };
+		9B50FB9E1AFBDDE9002EF6E2 /* bdlogo.png in Resources */ = {isa = PBXBuildFile; fileRef = 9B50FB9D1AFBDDE9002EF6E2 /* bdlogo.png */; };
+		9B50FB9F1AFBDDE9002EF6E2 /* bdlogo.png in Resources */ = {isa = PBXBuildFile; fileRef = 9B50FB9D1AFBDDE9002EF6E2 /* bdlogo.png */; };
 		9B74A59D1AE5FFFA00946788 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B74A59C1AE5FFFA00946788 /* main.m */; };
 		9B74A5A01AE5FFFA00946788 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B74A59F1AE5FFFA00946788 /* AppDelegate.m */; };
 		9B74A5A31AE5FFFA00946788 /* StartViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B74A5A21AE5FFFA00946788 /* StartViewController.m */; };
@@ -87,6 +89,7 @@
 		9B50FB971AFB9889002EF6E2 /* CustomCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomCell.xib; sourceTree = "<group>"; };
 		9B50FB9A1AFB99DF002EF6E2 /* CustomCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomCell.h; sourceTree = "<group>"; };
 		9B50FB9B1AFB99DF002EF6E2 /* CustomCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomCell.m; sourceTree = "<group>"; };
+		9B50FB9D1AFBDDE9002EF6E2 /* bdlogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bdlogo.png; sourceTree = "<group>"; };
 		9B74A5971AE5FFFA00946788 /* BlockDump.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BlockDump.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9B74A59B1AE5FFFA00946788 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9B74A59C1AE5FFFA00946788 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -193,6 +196,7 @@
 		9B74A59A1AE5FFFA00946788 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				9B50FB9D1AFBDDE9002EF6E2 /* bdlogo.png */,
 				2260BCC11AEDB50500CD8F8D /* radiobox-blank.png */,
 				22352E091AFA90020045A034 /* character.png */,
 				22C5CC351AF961A600E54B10 /* square.png */,
@@ -326,6 +330,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9B50FB9E1AFBDDE9002EF6E2 /* bdlogo.png in Resources */,
 				9BA6E1231AE6B82900D7B03E /* ic_hiscore2.png in Resources */,
 				9BA6E1141AE608B000D7B03E /* ic_howto.png in Resources */,
 				9BA6E1161AE608B000D7B03E /* ic_play.png in Resources */,
@@ -356,6 +361,7 @@
 				9BA6E1271AE6B84200D7B03E /* ic_howto2.png in Resources */,
 				9B50FB991AFB988A002EF6E2 /* CustomCell.xib in Resources */,
 				9BA6E1241AE6B82900D7B03E /* ic_hiscore2.png in Resources */,
+				9B50FB9F1AFBDDE9002EF6E2 /* bdlogo.png in Resources */,
 				9BA6E1171AE608B000D7B03E /* ic_play.png in Resources */,
 				9BA6E1151AE608B000D7B03E /* ic_howto.png in Resources */,
 				9BA6E1211AE6B5AC00D7B03E /* ic_stats.png in Resources */,

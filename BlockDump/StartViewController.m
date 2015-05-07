@@ -33,6 +33,9 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
     
+    //Hide Navbar
+    [[self navigationController] setNavigationBarHidden:YES animated:YES];
+    
     //INITIALIZE PLAYER
     thePlayer = [[Player alloc] init];
     thePlayer.name = @"The Player";
@@ -51,7 +54,7 @@
     
     
     // Rounded Play button
-    CGRect frame1 = CGRectMake(50, 180, 120, 120);
+    CGRect frame1 = CGRectMake(55, 220, 120, 120);
     HTPressableButton *playButton = [[HTPressableButton alloc] initWithFrame:frame1 buttonStyle:HTPressableButtonStyleRounded];
     [playButton setTag:1];
     playButton.buttonColor = [UIColor ht_grapeFruitColor];
@@ -65,7 +68,7 @@
 
     
     // Rounded Leaderboards button
-    CGRect frame2 = CGRectMake(200, 180, 120, 120);
+    CGRect frame2 = CGRectMake(205, 220, 120, 120);
     HTPressableButton *hiscoreButton = [[HTPressableButton alloc] initWithFrame:frame2 buttonStyle:HTPressableButtonStyleRounded];
     [hiscoreButton setTag:2];
     hiscoreButton.buttonColor = [UIColor ht_sunflowerColor];
@@ -79,7 +82,7 @@
 
     
     // Rounded Statistics button
-    CGRect frame3 = CGRectMake(50, 330, 120, 120);
+    CGRect frame3 = CGRectMake(55, 360, 120, 120);
     HTPressableButton *statsButton = [[HTPressableButton alloc] initWithFrame:frame3 buttonStyle:HTPressableButtonStyleRounded];
     [statsButton setTag:3];
     statsButton.buttonColor = [UIColor ht_lavenderColor];
@@ -93,7 +96,7 @@
 
     
     // Rounded Intro button
-    CGRect frame4 = CGRectMake(200, 330, 120, 120);
+    CGRect frame4 = CGRectMake(205, 360, 120, 120);
     HTPressableButton *howtoButton = [[HTPressableButton alloc] initWithFrame:frame4 buttonStyle:HTPressableButtonStyleRounded];
     [howtoButton setTag:4];
     howtoButton.buttonColor = [UIColor ht_emeraldColor];

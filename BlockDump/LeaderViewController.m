@@ -24,12 +24,13 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [[self navigationController] setNavigationBarHidden:NO animated:YES];
     
-    Player *p1 = [[Player alloc] initWithName:(NSString *)@"Malcolm Navarro" andScore:(NSInteger *) 203050];
-    Player *p2 = [[Player alloc] initWithName:(NSString *)@"Eric Bledsoe" andScore:(NSInteger *) 198400];
-    Player *p3 = [[Player alloc] initWithName:(NSString *)@"Sam Hagan" andScore:(NSInteger *) 150900];
-    Player *p4 = [[Player alloc] initWithName:(NSString *)@"Ron Swanson" andScore:(NSInteger *) 53000];
-    Player *p5 = [[Player alloc] initWithName:(NSString *)@"Bill Belichick" andScore:(NSInteger *) 2000];
+    Player *p1 = [[Player alloc] initWithName:(NSString *)@"Malcolm Navarro" andScore:(NSInteger) 203050];
+    Player *p2 = [[Player alloc] initWithName:(NSString *)@"Eric Bledsoe" andScore:(NSInteger) 198400];
+    Player *p3 = [[Player alloc] initWithName:(NSString *)@"Sam Hagan" andScore:(NSInteger) 150900];
+    Player *p4 = [[Player alloc] initWithName:(NSString *)@"Ron Swanson" andScore:(NSInteger) 53000];
+    Player *p5 = [[Player alloc] initWithName:(NSString *)@"Bill Belichick" andScore:(NSInteger) 2000];
     
     
     //ADD PLAYERS TO ARRAY
