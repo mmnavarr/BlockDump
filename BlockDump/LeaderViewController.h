@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 @import CoreLocation;
 
-@interface LeaderViewController : UIViewController
+@interface LeaderViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
 
 @property(strong, nonatomic) CLLocation *userLocation;
 

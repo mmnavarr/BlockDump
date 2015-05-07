@@ -11,6 +11,7 @@
 #import "PlayViewController.h"
 #import "HTPressableButton.h"
 #import "UIColor+HTColor.h"
+#import "Player.h"
 
 
 @interface StartViewController ()
@@ -26,10 +27,21 @@
 
 @synthesize userLocation;
 @synthesize locationManager;
+@synthesize thePlayer;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
+    
+    //INITIALIZE PLAYER
+    thePlayer = [[Player alloc] init];
+    thePlayer.name = @"The Player";
+    [thePlayer addScore:200000];
+    [thePlayer addScore:400000];
+    [thePlayer addScore:600000];
+    thePlayer.totalTime = 12000;
+    thePlayer.totalConsumed = 2000;
+    
     
     NSLog(@"latitude %+.6f, longitude %+.6f\n",
           userLocation.coordinate.latitude,
