@@ -211,6 +211,23 @@
                     <view key="view" contentMode="scaleToFill" id="DS8-hw-OZV">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" lineBreakMode="tailTruncation" numberOfLines="20" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="be9-l3-kOL">
+                                <rect key="frame" x="16" y="-36" width="311" height="636"/>
+                                <mutableString key="text">Block Dump is a game designed around dumping blocks. The game is played by controlling the character in the middle of the screen via rotating the wheel at the bottom of the screen. The player's goal is to collect the falling blocks by facing the middle character at a block.
+
+There are currently four types of blocks in the game, and collecting each has a different impact on the player's score and time:
+1. Red Triangle: Reduces the player's score and time left by 10 points/seconds respectively.
+2. Green Circle: Reduces the player's score by 5 points.
+3. Blue Hexagon: Increases the player's score by 5 points.
+4. Yellow Star: Increases the player's score and time left by 10 points/second respectively.
+
+Clearly, some blocks are beneficial, and others aren't. It is up to the player to avoid bad blocks and achieve the highest score possible.</mutableString>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
                 </viewController>
