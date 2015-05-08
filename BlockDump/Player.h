@@ -12,7 +12,7 @@
 #define BlockDump_Player_h
 
 @interface Player : NSObject
-
+//iVars
 @property (nonatomic, retain) NSString *name;
 @property (nonatomic) NSInteger highscore;
 @property (nonatomic) double lat;

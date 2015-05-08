@@ -28,10 +28,10 @@
     
     //LOAD VIEW THAT STATS ARE IN AND STYLE IT
     UIView *view = (UIButton *)[self.view viewWithTag:1];
-    view.layer.cornerRadius = 7;
+    view.layer.cornerRadius = 5;
     view.layer.masksToBounds = YES;
-    view.layer.borderColor = [UIColor purpleColor].CGColor;
-    view.layer.borderWidth = 5.0f;
+    view.layer.borderColor = [UIColor orangeColor].CGColor;
+    view.layer.borderWidth = 3.0f;
     
     //SHOW NAVBAR AGAIN
     [[self navigationController] setNavigationBarHidden:NO animated:YES];
@@ -73,15 +73,5 @@
     _tspritesLabel.text = s6;
     
 }
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

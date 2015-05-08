@@ -26,27 +26,27 @@
     [super viewDidLoad];
     [[self navigationController] setNavigationBarHidden:NO animated:YES];
     
+    //HTTPGET HIGHSCORES
     [self asyncGET];
     
-    Player *p1 = [[Player alloc] initWithName:(NSString *)@"LOADING DATA" andScore:(NSInteger) 80085 andLat:0.0 andLng:0.0];
+    //INITIAL PLAYER CELL WHILE ASYNC RUNS
+    Player *p1 = [[Player alloc] initWithName:(NSString *)@"Loading Highscores" andScore:(NSInteger) 80085 andLat:0.0 andLng:0.0];
     
     //ADD PLAYERS TO ARRAY
     _players = [NSMutableArray arrayWithObjects: p1, nil];
 }
 
 
+//REQUIRED TABLEVIEW METHODS TO POPULATE
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     return [_players count];
 }
-
-
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *myCell = @"myCell";
     
     CustomCell *cell = [tableView dequeueReusableCellWithIdentifier:myCell];
-    
     if (cell == nil) {
         [tableView registerNib:[UINib nibWithNibName:@"CustomCell" bundle:nil]forCellReuseIdentifier:myCell];
         cell = [tableView dequeueReusableCellWithIdentifier:myCell];
@@ -55,7 +55,7 @@
     //GET TEMP PLAYER FROM NSMutableArray + CONVERT NSINTEGER TO STRING
     Player *temp = [_players objectAtIndex:indexPath.row];
     NSString *highscore = [NSString stringWithFormat: @"%ld", (long)temp.highscore];
-    
+    //SET LABEL TEXT FIELDS WITH CORRESPONDING PLAYER OBJECT DATA
     cell.nameLabel.text = temp.name;
     cell.scoreLabel.text = highscore;
     
@@ -104,6 +104,7 @@
 
 - (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error {
     //THE REQUEST FAILED
+    NSLog(@"Request Failed! Sorry bro");
 }
 
 //PARSE THE JSON RECEIVED INTO A NSMUTABLEARRAY

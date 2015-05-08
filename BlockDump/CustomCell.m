@@ -9,5 +9,6 @@
 #import "CustomCell.h"
 
 @implementation CustomCell
-
+//LOOK AT CustomCell.h TO SEE FIELDS OF THIS CLASS
+//USED TO CREATE CUSTOM CELLS IN THE TABLEVIEW
 @end

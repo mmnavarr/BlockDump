@@ -16,12 +16,6 @@
 
 
 @interface StartViewController ()
-
-@property (weak, nonatomic) IBOutlet HTPressableButton *playButton;
-@property (weak, nonatomic) IBOutlet HTPressableButton *hiscoreButton;
-@property (weak, nonatomic) IBOutlet HTPressableButton *statsButton;
-@property (weak, nonatomic) IBOutlet HTPressableButton *howtoButton;
-
 @end
 
 
@@ -38,11 +32,18 @@
     //HIDE NAVBAR
     [[self navigationController] setNavigationBarHidden:YES animated:YES];
     
+    //start location manager to get location for leaderboards
+    [self startLocationManager];
     NSLog(@"latitude %+.6f, longitude %+.6f\n",userLocation.coordinate.latitude,userLocation.coordinate.longitude);
-    [self startLocationManager]; //start location manager to get location for leaderboards
     
     
-    // Rounded Play button
+    /* All buttons are made with the initWithFrame using a CGRect as the argument.
+     They contain a tag for reference, an image and a holdDown and holdRelease.
+     holdDown and holdRelease control moving the image witht the button click create a clean UI */
+     
+    
+    
+    //CREATE ROUNDED PLAY BUTTON
     CGRect frame1 = CGRectMake(55, 220, 120, 120);
     HTPressableButton *playButton = [[HTPressableButton alloc] initWithFrame:frame1 buttonStyle:HTPressableButtonStyleRounded];
     [playButton setTag:1];
@@ -56,7 +57,7 @@
     [playButton addTarget:self action:@selector(holdDown:) forControlEvents:UIControlEventTouchDragInside];
 
     
-    // Rounded Leaderboards button
+    //CREATE ROUNDED LEADERBOARDS BUTTON
     CGRect frame2 = CGRectMake(205, 220, 120, 120);
     HTPressableButton *hiscoreButton = [[HTPressableButton alloc] initWithFrame:frame2 buttonStyle:HTPressableButtonStyleRounded];
     [hiscoreButton setTag:2];
@@ -70,7 +71,7 @@
     [hiscoreButton addTarget:self action:@selector(holdDown:) forControlEvents:UIControlEventTouchDragInside];
 
     
-    // Rounded Statistics button
+    //CREATE ROUNDED STATS BUTTON
     CGRect frame3 = CGRectMake(55, 360, 120, 120);
     HTPressableButton *statsButton = [[HTPressableButton alloc] initWithFrame:frame3 buttonStyle:HTPressableButtonStyleRounded];
     [statsButton setTag:3];
@@ -84,7 +85,7 @@
     [statsButton addTarget:self action:@selector(holdDown:) forControlEvents:UIControlEventTouchDragInside];
 
     
-    // Rounded Intro button
+    //CREATE ROUNDED TUTORIAL BUTTON
     CGRect frame4 = CGRectMake(205, 360, 120, 120);
     HTPressableButton *howtoButton = [[HTPressableButton alloc] initWithFrame:frame4 buttonStyle:HTPressableButtonStyleRounded];
     [howtoButton setTag:4];
@@ -97,7 +98,7 @@
     [howtoButton addTarget:self action:@selector(holdRelease:) forControlEvents:UIControlEventTouchUpInside];
     [howtoButton addTarget:self action:@selector(holdDown:) forControlEvents:UIControlEventTouchDragInside];
     
-    
+    //ADD ALL BUTTON TO VIEW
     [self.view addSubview:playButton];
     [self.view addSubview:hiscoreButton];
     [self.view addSubview:statsButton];
@@ -138,6 +139,7 @@
 - (IBAction)holdRelease:(id) sender
 {
     //MOVE IMAGE UP WITH RELEASE
+    //ALSO SEGUE TO NEXT VIEWCONTROLLER
     HTPressableButton *tmp = sender;
     switch (tmp.tag) {
         case 1:
@@ -171,6 +173,7 @@
     }
 }
 
+//START LOCATION MANAGER TO GET USER LOCATION
 - (void) startLocationManager{
     userLocation = [[CLLocation alloc] init];
     
@@ -199,8 +202,8 @@
         
     }
 }
- 
 
+//SEGUE METHOD TO PASS USER LOCATION TO THESE VIEWCONTROLLERS
  - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
      if ([segue.identifier isEqualToString:@"playSeg"]){
          PlayViewController *playViewController = segue.destinationViewController;

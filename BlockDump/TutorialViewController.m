@@ -7,9 +7,10 @@
 //
 
 #import "TutorialViewController.h"
+#import "HTPressableButton.h"
+#import "UIColor+HTColor.h"
 
 @interface TutorialViewController ()
-
 @end
 
 @implementation TutorialViewController
@@ -18,7 +19,17 @@
     [super viewDidLoad];
     [[self navigationController] setNavigationBarHidden:NO animated:YES];
     
-    // Do any additional setup after loading the view.
+    //Disabled rounded rectangular button
+    CGRect frame = CGRectMake(50, 120, 275, 60);
+    HTPressableButton *howtoplay = [[HTPressableButton alloc] initWithFrame:frame buttonStyle:HTPressableButtonStyleRounded];
+    howtoplay.disabledButtonColor = [UIColor ht_grapeFruitColor];
+    howtoplay.disabledShadowColor = [UIColor ht_grapeFruitDarkColor];
+    howtoplay.shadowHeight = 0;
+    howtoplay.enabled = NO;
+    [howtoplay setTitle:@"Collect The Blocks!" forState:UIControlStateNormal];
+    [self.view addSubview:howtoplay];
+    
+    //EVERYTHING IS ON THE STORYBOARD FOR THIS VIEWCONTROLLER
 }
 
 - (void)didReceiveMemoryWarning {
@@ -26,14 +37,5 @@
     // Dispose of any resources that can be recreated.
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

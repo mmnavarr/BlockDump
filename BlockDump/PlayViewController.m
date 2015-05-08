@@ -9,11 +9,16 @@
 #import "PlayViewController.h"
 #import "LeaderViewController.h"
 #import "StartViewController.h"
+#import "HTPressableButton.h"
+#import "UIColor+HTColor.h"
 #define ARC4RANDOM_MAX 0x100000000
 
 
 @interface PlayViewController ()
+@property (weak, nonatomic) IBOutlet HTPressableButton *backButton;
+@property (weak, nonatomic) IBOutlet HTPressableButton *restartButton;
 @end
+
 
 @implementation PlayViewController
 
@@ -32,7 +37,7 @@
     // Do any additional setup after loading the view.
     [self setupSounds];
     secondCount = 0;
-    score = 650;
+    score = 0;
     characterState = 0;
     blockCollisions = 0;
     highscore = false;
@@ -55,7 +60,7 @@
     [spriteNames addObject:@"hex_sprite"];
     [spriteNames addObject:@"star_sprite"];
     
-    timeLeft = 5.0;
+    timeLeft = 60.0;
     
     //height and width of the screen
     w = CGRectGetWidth(self.view.bounds);
@@ -73,7 +78,6 @@
     
     //start the timer
     timer = [NSTimer scheduledTimerWithTimeInterval:1
-     
                                      target:self
                                    selector:@selector(updateLabel:)
                                    userInfo:nil
