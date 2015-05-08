@@ -13,42 +13,30 @@
 
 @synthesize name = _name;
 @synthesize highscore = _highscore;
-@synthesize avgScore = _avgScore;
-@synthesize totalScore = _totalScore;
-@synthesize totalConsumed = _totalConsumed;
-@synthesize totalTime = _totalTime;
-@synthesize totalGames = _totalGames;
+@synthesize lat = _lat;
+@synthesize lng = _lng;
+
 
 -(id)init
 {
     self = [super init];
     _name = @"Ricky Bobby";
     _highscore = (NSInteger)0;
-    _totalScore = (NSInteger)0;
-    _avgScore = (NSInteger)0;
-    _totalConsumed = (NSInteger)0;
-    _totalTime = (NSInteger)0;
-    _totalGames = (NSInteger)0;
     return self;
 }
 
--(id)initWithName:(NSString *)aFirstName andScore:(NSInteger)aScore
+-(id)initWithName:(NSString *)aFirstName andScore:(NSInteger)aScore andLat:(double)aLat andLng:(double)aLng
 {
     _name = aFirstName;
     _highscore = aScore;
+    _lat = aLat;
+    _lng = aLng;
     return self;
 }
 
--(void) addScore:(int)score
+- (void) print
 {
-    if (score > _highscore)
-        _highscore = score;
-    
-    _totalScore += score;
-    
-    _totalGames++;
-    
-    _avgScore = (_totalScore/_totalGames);
+    NSLog(@"Player name: %@ with highscore of %ld located @ (%f,%f)", _name, (long)_highscore, _lat, _lng);
 }
 
 @end

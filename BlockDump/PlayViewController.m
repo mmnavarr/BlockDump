@@ -158,9 +158,8 @@
     secondCount++;
     timeLeft = timeLeft - 1;
     if (timeLeft <= 0){
+        //
         [self finishedGame];
-        
-        
         //game ends
         [gameEnded play];
         [self.view.layer removeAllAnimations];
