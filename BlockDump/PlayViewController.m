@@ -27,7 +27,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [[self navigationController] setNavigationBarHidden:YES animated:YES];
+    [[self navigationController] setNavigationBarHidden:NO animated:YES];
     // Do any additional setup after loading the view.
     [self setupSounds];
     secondCount = 0;
@@ -48,12 +48,14 @@
     //initialize arrays
     spriteViews = [[NSMutableArray alloc] init];
     
+    //add image names for creating random sprite imageviews later
     spriteNames = [[NSMutableArray alloc] init];
     [spriteNames addObject:@"triangle_sprite"];
     [spriteNames addObject:@"circle_sprite"];
     [spriteNames addObject:@"hex_sprite"];
     [spriteNames addObject:@"star_sprite"];
     
+    // The length of the game
     timeLeft = 60.0;
     
     //height and width of the screen
@@ -82,7 +84,7 @@
     UIImageView *rotationView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"circle2"]];
     [rotationView setBounds:CGRectMake(0, 0, w/6.0f, h/11.0f)];
     [rotationView setCenter:CGPointMake(w/2.0f, h-60.0f)];
-    [rotationView setUserInteractionEnabled:YES];
+    [rotationView setUserInteractionEnabled:YES];//important - enables the rotation gesture
     
     //rotation gesture recognizer
     UIRotationGestureRecognizer *rtn = [[UIRotationGestureRecognizer alloc]initWithTarget:self action:@selector(handleRotation:)];
@@ -97,11 +99,12 @@
     [characterView setCenter:self.view.center];
     
     
-    
+    //add SubViews to the actual view
     [self.view addSubview:characterView];
     [self.view bringSubviewToFront:characterView];
     [self.view addSubview:rotationView];
     
+    //play the game started sound
     [gameStarted play];
     
     NSLog(@"latitude %+.6f, longitude %+.6f\n", // debugging location
@@ -128,7 +131,7 @@
         CGFloat rotation = [recognizer rotation];
         //rotate the character in sync with the bottom circle
         [recognizer.view setTransform:CGAffineTransformRotate(recognizer.view.transform, rotation)];
-        if (rotation <= -M_PI_4/6){
+        if (rotation <= -M_PI_4/6){//make the rotation less sensitive
             [characterView setTransform:CGAffineTransformRotate(characterView.transform, M_PI_2)];
             if (characterState == 0){
                 characterState = 3;
@@ -148,7 +151,7 @@
             }
             NSLog(@"Character state: %i",characterState);
         }
-        [recognizer setRotation:0];
+        [recognizer setRotation:0];//reset the recognizer while exiting the method
     }
     
 }
@@ -158,12 +161,12 @@
     secondCount++;
     timeLeft = timeLeft - 1;
     if (timeLeft <= 0){
-        //
+        //update statistics page
         [self finishedGame];
         //game ends
         [gameEnded play];
         [self.view.layer removeAllAnimations];
-        if (highscore) {
+        if (highscore) { //if the user set a highscore, use a different alert view
             UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Game Over"
                                                             message:[NSString stringWithFormat:@"You set a high score! Score: %i", score]
                                                            delegate:self
@@ -173,7 +176,7 @@
             
             [alert show];
         }
-        else {
+        else {//if they didn't set a high score, display the default alert view
             UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Game Over"
                                                         message:[NSString stringWithFormat:@"You have run out of time. Score: %i", score]
                                                        delegate:self
@@ -183,7 +186,7 @@
         
             [alert show];
         }
-        [timer invalidate];
+        [timer invalidate]; //stop the timer
         
     }
     //generate/add a sprite every two seconds
@@ -193,10 +196,12 @@
     _timeLabel.text = [NSString stringWithFormat:@"Time: %is", (int)timeLeft];
 }
 
+//method to generate a random float for use in sprite spawn coordinate
 - (CGFloat) randomBetween: (CGFloat) x and: (CGFloat) y {
     return ((double)arc4random() / ARC4RANDOM_MAX) * (y - x) + x;
 }
 
+//method to add a block to the grid
 - (void) spawnSprite {
     int spriteRandom = arc4random_uniform(4);//pick a random sprite
     NSLog(@"sprite random: %i", spriteRandom);
@@ -208,23 +213,30 @@
             switch (spriteRandom){
                 case (0):{
                     spriteName = [spriteNames objectAtIndex:0];
+                    //get the random image
                     UIImage *spriteImg = [UIImage imageNamed:spriteName];
+                    //create a view to contain the image
                     UIImageView *spriteView = [[UIImageView alloc] initWithImage:spriteImg];
-                    [spriteView setTag:0];
-                    [spriteView setRestorationIdentifier:spriteName];
+                    [spriteView setTag:0];//for use in collision handling
+                    [spriteView setRestorationIdentifier:spriteName];//for use in collision handling
                     NSLog(@"spriteView made");
+                    //generate a spawn point on the bottom side of the grid
                     CGPoint spritePoint = CGPointMake([self randomBetween:bottomLeft.x and:bottomRight.x], bottomLeft.y);
                     NSLog(@"Sprite point x value: %f, Sprite point y value: %f", spritePoint.x, spritePoint.y);
+                    //create a CGRect to contain the image using the spawn point
                     CGRect spriteRect = CGRectMake(spritePoint.x, spritePoint.y, gridW/15, gridH/20);
                     [spriteView setFrame:spriteRect];
-                    [spriteViews addObject:spriteView];
                     
+                    //finally, add the subview
+                    [spriteViews addObject:spriteView];
                     [self.view addSubview:spriteView];
+                    //begin the sprite animation
                     [self beginSpriteAnimation:spriteView];
                     break;
                     
                 }
                 case (1):{
+                    //for explanation of the code in each of these cases, see case 0 of case 0
                     spriteName = [spriteNames objectAtIndex:1];
                     UIImage *spriteImg = [UIImage imageNamed:spriteName];
                     UIImageView *spriteView = [[UIImageView alloc] initWithImage:spriteImg];
@@ -242,6 +254,7 @@
                     break;
                 }
                 case (2):{
+                    //for explanation of the code in each of these cases, see case 0 of case 0
                     spriteName = [spriteNames objectAtIndex:2];
                     UIImage *spriteImg = [UIImage imageNamed:spriteName];
                     UIImageView *spriteView = [[UIImageView alloc] initWithImage:spriteImg];
@@ -259,6 +272,7 @@
                     break;
                 }
                 case (3):{
+                    //for explanation of the code in each of these cases, see case 0 of case 0
                     spriteName = [spriteNames objectAtIndex:3];
                     UIImage *spriteImg = [UIImage imageNamed:spriteName];
                     UIImageView *spriteView = [[UIImageView alloc] initWithImage:spriteImg];
@@ -281,6 +295,7 @@
         case (1):{//left side
             switch (spriteRandom){
                 case (0):{
+                    //for explanation of the code in each of these cases, see case 0 of case 0
                     spriteName = [spriteNames objectAtIndex:0];
                     UIImage *spriteImg = [UIImage imageNamed:spriteName];
                     UIImageView *spriteView = [[UIImageView alloc] initWithImage:spriteImg];
@@ -299,6 +314,7 @@
                     
                 }
                 case (1):{
+                    //for explanation of the code in each of these cases, see case 0 of case 0
                     spriteName = [spriteNames objectAtIndex:1];
                     UIImage *spriteImg = [UIImage imageNamed:spriteName];
                     UIImageView *spriteView = [[UIImageView alloc] initWithImage:spriteImg];
@@ -316,6 +332,7 @@
                     break;
                 }
                 case (2):{
+                    //for explanation of the code in each of these cases, see case 0 of case 0
                     spriteName = [spriteNames objectAtIndex:2];
                     UIImage *spriteImg = [UIImage imageNamed:spriteName];
                     UIImageView *spriteView = [[UIImageView alloc] initWithImage:spriteImg];
@@ -333,6 +350,7 @@
                     break;
                 }
                 case (3):{
+                    //for explanation of the code in each of these cases, see case 0 of case 0
                     spriteName = [spriteNames objectAtIndex:3];
                     UIImage *spriteImg = [UIImage imageNamed:spriteName];
                     UIImageView *spriteView = [[UIImageView alloc] initWithImage:spriteImg];
@@ -355,6 +373,7 @@
         case (2):{//top side
             switch (spriteRandom){
                 case (0):{
+                    //for explanation of the code in each of these cases, see case 0 of case 0
                     spriteName = [spriteNames objectAtIndex:0];
                     UIImage *spriteImg = [UIImage imageNamed:spriteName];
                     UIImageView *spriteView = [[UIImageView alloc] initWithImage:spriteImg];
@@ -372,6 +391,7 @@
                     break;
                 }
                 case (1):{
+                    //for explanation of the code in each of these cases, see case 0 of case 0
                     spriteName = [spriteNames objectAtIndex:1];
                     UIImage *spriteImg = [UIImage imageNamed:spriteName];
                     UIImageView *spriteView = [[UIImageView alloc] initWithImage:spriteImg];
@@ -389,6 +409,7 @@
                     break;
                 }
                 case (2):{
+                    //for explanation of the code in each of these cases, see case 0 of case 0
                     spriteName = [spriteNames objectAtIndex:2];
                     UIImage *spriteImg = [UIImage imageNamed:spriteName];
                     UIImageView *spriteView = [[UIImageView alloc] initWithImage:spriteImg];
@@ -406,6 +427,7 @@
                     break;
                 }
                 case (3):{
+                    //for explanation of the code in each of these cases, see case 0 of case 0
                     spriteName = [spriteNames objectAtIndex:3];
                     UIImage *spriteImg = [UIImage imageNamed:spriteName];
                     UIImageView *spriteView = [[UIImageView alloc] initWithImage:spriteImg];
@@ -428,6 +450,7 @@
         case (3):{//right side
             switch (spriteRandom){
                 case (0):{
+                    //for explanation of the code in each of these cases, see case 0 of case 0
                     spriteName = [spriteNames objectAtIndex:0];
                     UIImage *spriteImg = [UIImage imageNamed:spriteName];
                     UIImageView *spriteView = [[UIImageView alloc] initWithImage:spriteImg];
@@ -445,6 +468,7 @@
                     break;
                 }
                 case (1):{
+                    //for explanation of the code in each of these cases, see case 0 of case 0
                     spriteName = [spriteNames objectAtIndex:1];
                     UIImage *spriteImg = [UIImage imageNamed:spriteName];
                     UIImageView *spriteView = [[UIImageView alloc] initWithImage:spriteImg];
@@ -462,6 +486,7 @@
                     break;
                 }
                 case (2):{
+                    //for explanation of the code in each of these cases, see case 0 of case 0
                     spriteName = [spriteNames objectAtIndex:2];
                     UIImage *spriteImg = [UIImage imageNamed:spriteName];
                     UIImageView *spriteView = [[UIImageView alloc] initWithImage:spriteImg];
@@ -479,6 +504,7 @@
                     break;
                 }
                 case (3):{
+                    //for explanation of the code in each of these cases, see case 0 of case 0
                     spriteName = [spriteNames objectAtIndex:3];
                     UIImage *spriteImg = [UIImage imageNamed:spriteName];
                     UIImageView *spriteView = [[UIImageView alloc] initWithImage:spriteImg];
@@ -506,9 +532,12 @@
     float x;
     float y;
     int duration;
+    //sprite.tag contains the side that it was spawned on.
+    //sprites spawned on the left or right side need to have a shorter duration
+    //because the distance to center is shorter
     switch (sprite.tag){
         case (0):{
-            x = self.view.center.x-8;
+            x = self.view.center.x-8; //offset center x and y a little for each side
             y = self.view.center.y + 28;
             duration = 7;
             break;
@@ -591,6 +620,7 @@
     
 }
 
+//update standard user default for statistics page
 - (void) finishedGame {
     //GET USER DEFAULTS AND UPDATE PLAYER DATA
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
@@ -631,15 +661,19 @@
     NSString *title = [alertView buttonTitleAtIndex:buttonIndex];
     
     if ([title isEqualToString:@"Restart"]){
+        //restart the game
         [self restart];
     }
     else if ([title isEqualToString:@"Leaderboards"]){
+        //go to the leaderboards
         [self performSegueWithIdentifier:@"playToLeader" sender:self];
     }
     else if ([title isEqualToString:@"Home Page"]){
+        //go to the home page
         [self performSegueWithIdentifier:@"playToStart" sender:self];
     }
     else if ([title isEqualToString:@"Submit Score"]){
+        //get user input for a name for their high score
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Name"
                                                         message:[NSString stringWithFormat:@"Please provide a name"]
                                                        delegate:self
@@ -649,7 +683,7 @@
         
         [alert show];
     }
-    else if ([title isEqualToString:@"Name"]){
+    else if ([title isEqualToString:@"Done"]){
         UITextField *name = [alertView textFieldAtIndex:0];
         NSString *stringName = name.text;
         //post goes here, stringName is the username, score is the score
@@ -669,6 +703,7 @@
 
 - (void) restart {
     
+    //reset values
     [spriteViews removeAllObjects];
     timeLeft = 60;
     score = 0;
@@ -694,6 +729,7 @@
                                                        error:nil];
     gameEnded.volume = 0.3;
     
+    //set up sound for game started
     soundPath = [[NSBundle mainBundle] pathForResource:@"Western-Gunshot"
                                                 ofType:@"wav"];
     fileURL = [[NSURL alloc] initFileURLWithPath:soundPath];
