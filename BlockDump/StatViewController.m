@@ -54,7 +54,7 @@
     NSInteger totalGames = [defaults integerForKey:@"TotalGames"];
     NSInteger avgScore = totalScore/totalGames;
     NSInteger totalTime = [defaults integerForKey:@"TotalTime"];
-    //NSInteger totalSprite = [defaults integerForKey:@"TotalSprite"];
+    NSInteger totalSprite = [defaults integerForKey:@"TotalSprite"];
     
     //CONVERT INTEGERS TO STRING
     NSString *s1 = [NSString stringWithFormat:@"%d", (int)highScore];
@@ -62,7 +62,7 @@
     NSString *s3 = [NSString stringWithFormat:@"%d", (int)avgScore];
     NSString *s4 = [NSString stringWithFormat:@"%d", (int)totalGames];
     NSString *s5 = [NSString stringWithFormat:@"%d", (int)totalTime];
-    //NSString *s6 = [NSString stringWithFormat:@"%d", (int)totalSprite];
+    NSString *s6 = [NSString stringWithFormat:@"%d", (int)totalSprite];
     
     //SET LABELS
     _highscoreLabel.text = s1;
@@ -70,7 +70,8 @@
     _avgscoreLabel.text = s3;
     _tgamesLabel.text = s4;
     _ttimeLabel.text = s5;
-    _tspritesLabel.text = 0;
+    _tspritesLabel.text = s6;
+    
 }
 
 /*

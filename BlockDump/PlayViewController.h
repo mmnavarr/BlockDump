@@ -18,11 +18,14 @@
     int blocksEaten;
     float timeLeft;
     int secondCount;
+    int characterState;
+    int blockCollisions;
+    BOOL highscore;
     
     CGFloat gridW;
     CGFloat gridH;
-    CGFloat toW;
-    CGFloat toH;
+    CGFloat w;
+    CGFloat h;
     CGPoint topLeft;
     CGPoint topRight;
     CGPoint bottomLeft;
