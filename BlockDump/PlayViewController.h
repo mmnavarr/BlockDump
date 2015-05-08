@@ -19,6 +19,8 @@
     float timeLeft;
     int secondCount;
     int characterState;
+    int blockCollisions;
+    BOOL highscore;
     
     CGFloat gridW;
     CGFloat gridH;

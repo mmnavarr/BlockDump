@@ -33,6 +33,8 @@
     secondCount = 0;
     score = 0;
     characterState = 0;
+    blockCollisions = 0;
+    highscore = false;
     
     //for accelerometer/gyro data
     motionManager = [[CMMotionManager alloc] init];
@@ -52,7 +54,7 @@
     [spriteNames addObject:@"hex_sprite"];
     [spriteNames addObject:@"star_sprite"];
     
-    timeLeft = 5.0;
+    timeLeft = 60.0;
     
     //height and width of the screen
     w = CGRectGetWidth(self.view.bounds);
@@ -126,7 +128,7 @@
         CGFloat rotation = [recognizer rotation];
         //rotate the character in sync with the bottom circle
         [recognizer.view setTransform:CGAffineTransformRotate(recognizer.view.transform, rotation)];
-        if (rotation < 0){
+        if (rotation <= -M_PI_4/6){
             [characterView setTransform:CGAffineTransformRotate(characterView.transform, M_PI_2)];
             if (characterState == 0){
                 characterState = 3;
@@ -136,7 +138,7 @@
             }
             NSLog(@"Character state: %i",characterState);
         }
-        else {
+        else if (rotation >= M_PI_4/6){
             [characterView setTransform:CGAffineTransformRotate(characterView.transform, -M_PI_2)];
             if (characterState == 3){
                 characterState = 0;
@@ -151,12 +153,6 @@
     
 }
 
-- (void) setLocation:(CLLocation *) location {
-    userLocation = [[CLLocation alloc] init];
-    userLocation = location;
-}
-
-
 - (void) updateLabel:(NSTimer*)theTimer
 {
     secondCount++;
@@ -168,15 +164,26 @@
         //game ends
         [gameEnded play];
         [self.view.layer removeAllAnimations];
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Game Over"
+        if (highscore) {
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Game Over"
+                                                            message:[NSString stringWithFormat:@"You set a high score! Score: %i", score]
+                                                           delegate:self
+                                                  cancelButtonTitle:@"Restart"
+                                                  otherButtonTitles:@"Submit Score", nil];
+            [alert setAlertViewStyle:UIAlertViewStyleDefault];
+            
+            [alert show];
+        }
+        else {
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Game Over"
                                                         message:[NSString stringWithFormat:@"You have run out of time. Score: %i", score]
                                                        delegate:self
                                               cancelButtonTitle:@"Restart"
                                               otherButtonTitles:@"Home Page", @"Leaderboards", nil];
-        [alert setAlertViewStyle:UIAlertViewStyleDefault];
+            [alert setAlertViewStyle:UIAlertViewStyleDefault];
         
-        [alert show];
-        
+            [alert show];
+        }
         [timer invalidate];
         
     }
@@ -554,6 +561,7 @@
     }
     else {
         if (characterState == sprite.tag){
+            blockCollisions++;
             if ([sprite.restorationIdentifier isEqualToString:@"triangle_sprite"]){
                 score -= 10;
                 timeLeft -=10;
@@ -590,12 +598,12 @@
     
     //SEE IF ITS THE NEW HIGHSCORE
     NSInteger highScore = [defaults integerForKey:@"HighScore"];
-    if (score > highScore)
+    if (score > highScore){
         [defaults setInteger:score forKey:@"HighScore"];
-
+        highscore = true;
+    }
     //INCR TOTAL SCORE
-    //NSInteger totalScore = [defaults integerForKey:@"TotalScore"] + score;
-    NSInteger totalScore = [defaults integerForKey:@"TotalScore"] + 10000;
+    NSInteger totalScore = [defaults integerForKey:@"TotalScore"] + score;
     [defaults setInteger:totalScore forKey:@"TotalScore"];
     
     //INCR TOTAL GAMES PLAYED
@@ -610,8 +618,8 @@
     NSInteger totalTime = [defaults integerForKey:@"TotalTime"] + secondCount;
     [defaults setInteger:totalTime forKey:@"TotalTime"];
     
-    //NSInteger totalSprite = [defaults integerForKey:@"TotalSprite"] + spriteCollisions;
-    //[defaults setInteger:totalSprite forKey:@"TotalSprite"];
+    NSInteger totalSprite = [defaults integerForKey:@"TotalSprite"] + blockCollisions;
+    [defaults setInteger:totalSprite forKey:@"TotalSprite"];
     
     [defaults synchronize];
 
@@ -632,6 +640,21 @@
     else if ([title isEqualToString:@"Home Page"]){
         [self performSegueWithIdentifier:@"playToStart" sender:self];
     }
+    else if ([title isEqualToString:@"Submit Score"]){
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Name"
+                                                        message:[NSString stringWithFormat:@"Please provide a name"]
+                                                       delegate:self
+                                              cancelButtonTitle:@"Done"
+                                              otherButtonTitles: nil];
+        [alert setAlertViewStyle:UIAlertViewStylePlainTextInput];
+        
+        [alert show];
+    }
+    else if ([title isEqualToString:@"Name"]){
+        UITextField *name = [alertView textFieldAtIndex:0];
+        NSString *stringName = name.text;
+        //post goes here, stringName is the username, score is the score
+    }
 }
 
 
@@ -642,6 +665,8 @@
     [spriteViews removeAllObjects];
     timeLeft = 60;
     score = 0;
+    blockCollisions = 0;
+    secondCount = 0;
     _timeLabel.text = [NSString stringWithFormat:@"Time: %is", (int)timeLeft];
     _scoreLabel.text = [NSString stringWithFormat:@"Score: %i", (int)score];
     //start the timer
