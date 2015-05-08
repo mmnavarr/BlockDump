@@ -22,8 +22,8 @@
 
 @implementation StartViewController
 
-@synthesize userLocation;
-@synthesize locationManager;
+@synthesize userLocation = _userLocation;
+@synthesize locationManager = _locationManager;
 @synthesize playerMain = _playerMain;
 
 - (void)viewDidLoad {
@@ -145,25 +145,25 @@
         case 1:
             tmp.imageEdgeInsets = UIEdgeInsetsMake(0, 0, 12, 0);
             NSLog(@"Hold release button #1");
-            [locationManager stopUpdatingLocation];
+            [_locationManager stopUpdatingLocation];
             [self performSegueWithIdentifier:@"playSeg" sender:self];
             break;
         case 2:
             tmp.imageEdgeInsets = UIEdgeInsetsMake(100, 160, 280, 160);
             NSLog(@"Hold release button #2");
-            [locationManager stopUpdatingLocation];
+            [_locationManager stopUpdatingLocation];
             [self performSegueWithIdentifier:@"leaderSeg" sender:self];
             break;
         case 3:
             tmp.imageEdgeInsets = UIEdgeInsetsMake(16, 16, 28, 16);
             NSLog(@"Hold release button #3");
-            [locationManager stopUpdatingLocation];
+            [_locationManager stopUpdatingLocation];
             [self performSegueWithIdentifier:@"statSeg" sender:self];
             break;
         case 4:
             tmp.imageEdgeInsets = UIEdgeInsetsMake(12, 12, 24, 12);
             NSLog(@"Hold release button #4");
-            [locationManager stopUpdatingLocation];
+            [_locationManager stopUpdatingLocation];
             [self performSegueWithIdentifier:@"tutorialSeg" sender:self];
             break;
         default:
@@ -175,15 +175,20 @@
 
 //START LOCATION MANAGER TO GET USER LOCATION
 - (void) startLocationManager{
-    userLocation = [[CLLocation alloc] init];
+    _userLocation = [[CLLocation alloc] init];
     
-    locationManager = [[CLLocationManager alloc] init];
-    //[locationManager locationServicesEnabled]; // deprecated?
-    locationManager.delegate = self;
-    locationManager.desiredAccuracy = kCLLocationAccuracyKilometer;
-    locationManager.distanceFilter = 500; // meters
+    _locationManager = [[CLLocationManager alloc] init];
+    _locationManager.delegate = self;
+    _locationManager.desiredAccuracy = kCLLocationAccuracyBest;
+    _locationManager.distanceFilter = kCLDistanceFilterNone;
     
-    [locationManager startUpdatingLocation];
+    if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 8.0 &&
+        [CLLocationManager authorizationStatus] != kCLAuthorizationStatusAuthorizedWhenInUse){
+        [self.locationManager requestWhenInUseAuthorization];
+    }
+    else{
+        [_locationManager startUpdatingLocation];
+    }
 }
 
 // Delegate method from the CLLocationManagerDelegate protocol.
@@ -198,7 +203,7 @@
         NSLog(@"latitude %+.6f, longitude %+.6f\n",
               location.coordinate.latitude,
               location.coordinate.longitude);
-        userLocation = location;
+        _userLocation = location;
         
     }
 }
@@ -215,6 +220,28 @@
      }
  }
 
+- (void)locationManager:(CLLocationManager*)manager didChangeAuthorizationStatus:(CLAuthorizationStatus)status {
+    switch (status) {
+        case kCLAuthorizationStatusNotDetermined: {
+            NSLog(@"Location Services Pending");
+        } break;
+        case kCLAuthorizationStatusDenied: {
+            NSLog(@"Location Services Denied");
+        } break;
+        case kCLAuthorizationStatusAuthorizedWhenInUse:
+        case kCLAuthorizationStatusAuthorizedAlways: {
+            [_locationManager startUpdatingLocation];
+        } break;
+        default:
+            break;
+    }
+}
+
+-(void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error{
+    UIAlertView *errorAlert = [[UIAlertView alloc]initWithTitle:@"Error" message:@"There was an error retrieving your location" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
+    [errorAlert show];
+    NSLog(@"Error: %@",error.description);
+}
 
 
 - (void)didReceiveMemoryWarning {
