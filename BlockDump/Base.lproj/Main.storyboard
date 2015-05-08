@@ -223,49 +223,49 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="triangle_sprite.png" translatesAutoresizingMaskIntoConstraints="NO" id="5WX-Cu-3tx">
-                                <rect key="frame" x="42" y="287" width="50" height="34"/>
+                                <rect key="frame" x="37" y="287" width="50" height="34"/>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="circle_sprite.png" translatesAutoresizingMaskIntoConstraints="NO" id="F5U-5D-1XJ">
-                                <rect key="frame" x="42" y="329" width="50" height="43"/>
+                                <rect key="frame" x="37" y="329" width="50" height="43"/>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="hex_sprite.png" translatesAutoresizingMaskIntoConstraints="NO" id="11H-yP-xvk">
-                                <rect key="frame" x="42" y="380" width="50" height="46"/>
+                                <rect key="frame" x="37" y="380" width="50" height="46"/>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="star_sprite.png" translatesAutoresizingMaskIntoConstraints="NO" id="zUD-Oh-R9B">
-                                <rect key="frame" x="42" y="434" width="50" height="44"/>
+                                <rect key="frame" x="37" y="434" width="50" height="44"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="+10 Points, +10 Seconds" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8iy-WH-Nwk">
-                                <rect key="frame" x="137" y="440" width="251" height="38"/>
+                                <rect key="frame" x="132" y="440" width="251" height="38"/>
                                 <fontDescription key="fontDescription" name="Thonburi-Bold" family="Thonburi" pointSize="15"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="+5 Points" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GBj-i3-rdh">
-                                <rect key="frame" x="137" y="380" width="251" height="40"/>
+                                <rect key="frame" x="132" y="380" width="251" height="40"/>
                                 <fontDescription key="fontDescription" name="Thonburi-Bold" family="Thonburi" pointSize="15"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="-5 Points" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l53-YH-bZz">
-                                <rect key="frame" x="137" y="329" width="251" height="43"/>
+                                <rect key="frame" x="132" y="329" width="251" height="43"/>
                                 <fontDescription key="fontDescription" name="Thonburi-Bold" family="Thonburi" pointSize="15"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="-10 Points, -10 Seconds" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EYL-Hu-J17">
-                                <rect key="frame" x="137" y="287" width="251" height="34"/>
+                                <rect key="frame" x="132" y="287" width="251" height="34"/>
                                 <fontDescription key="fontDescription" name="Thonburi-Bold" family="Thonburi" pointSize="15"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Different blocks affect your score and time differently, here's how:" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wwe-FZ-D1l">
-                                <rect key="frame" x="42" y="183" width="332" height="104"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Face your character at a block to collect it." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v11-QV-ZMG">
+                                <rect key="frame" x="37" y="504" width="332" height="36"/>
                                 <fontDescription key="fontDescription" name="Thonburi" family="Thonburi" pointSize="15"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Face your character at a block to collect it." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v11-QV-ZMG">
-                                <rect key="frame" x="42" y="504" width="332" height="36"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Different blocks affect your score and time differently, here's how:" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wwe-FZ-D1l">
+                                <rect key="frame" x="37" y="183" width="332" height="104"/>
                                 <fontDescription key="fontDescription" name="Thonburi" family="Thonburi" pointSize="15"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
@@ -273,6 +273,9 @@
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
+                    <connections>
+                        <segue destination="VDL-Jh-Zow" kind="show" identifier="letsPlay" id="789-iX-iuu"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tsb-0U-mlg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -306,7 +309,8 @@
         <image name="triangle_sprite.png" width="41" height="37"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="5za-lO-3q7"/>
         <segue reference="Ul4-6i-gYU"/>
+        <segue reference="789-iX-iuu"/>
+        <segue reference="5za-lO-3q7"/>
     </inferredMetricsTieBreakers>
 </document>
