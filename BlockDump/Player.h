@@ -15,15 +15,12 @@
 
 @property (nonatomic, retain) NSString *name;
 @property (nonatomic) NSInteger highscore;
-@property (nonatomic) NSInteger totalScore;
-@property (nonatomic) NSInteger avgScore;
-@property (nonatomic) NSInteger totalConsumed;
-@property (nonatomic) NSInteger totalTime;
-@property (nonatomic) NSInteger totalGames;
+@property (nonatomic) double lat;
+@property (nonatomic) double lng;
 
-- (id)initWithName:(NSString *)aFirstName andScore:(NSInteger)aScore;
-
-- (void) addScore:(int)score;
+- (id)init;
+- (id)initWithName:(NSString *)aName andScore:(NSInteger)aScore andLat:(double)aLat andLng:(double)aLng;
+- (void)print;
 
 @end
 

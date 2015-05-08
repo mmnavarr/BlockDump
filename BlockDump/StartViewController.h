@@ -11,7 +11,6 @@
 #import "PlayViewController.h"
 @import CoreLocation;
 
-//@interface StartViewController : UIViewController <PlayViewControllerDelegate, CLLocationManagerDelegate> {    }
 @interface StartViewController : UIViewController <CLLocationManagerDelegate> {    }
 
 @property (nonatomic, strong) CLLocation *userLocation;

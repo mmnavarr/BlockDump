@@ -9,8 +9,11 @@
 #import <UIKit/UIKit.h>
 @import CoreLocation;
 
-@interface LeaderViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
+@interface LeaderViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, NSURLConnectionDelegate>
 
 @property(strong, nonatomic) CLLocation *userLocation;
+@property(strong, nonatomic) NSMutableData *responseData;
+@property(strong, nonatomic) NSMutableArray *players;
+@property(strong, nonatomic) IBOutlet UITableView* tableView;
 
 @end

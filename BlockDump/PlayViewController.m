@@ -138,9 +138,8 @@
     secondCount++;
     timeLeft = timeLeft - 1;
     if (timeLeft <= 0){
+        //
         [self finishedGame];
-        
-        
         //game ends
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Game Over"
                                                         message:[NSString stringWithFormat:@"You have run out of time. Score: %i", score]
