@@ -23,8 +23,6 @@
 
 - (id)initWithName:(NSString *)aFirstName andScore:(NSInteger)aScore;
 
-- (void) averageScore;
-
 - (void) addScore:(int)score;
 
 @end

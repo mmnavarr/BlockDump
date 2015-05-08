@@ -30,23 +30,13 @@
 
 @synthesize userLocation;
 @synthesize locationManager;
-@synthesize playerMain;
+@synthesize playerMain = _playerMain;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     
     //HIDE NAVBAR
     [[self navigationController] setNavigationBarHidden:YES animated:YES];
-    
-    //INITIALIZE PLAYER
-    playerMain = [[Player alloc] init];
-    playerMain.name = @"The Player";
-    [playerMain addScore:200000];
-    [playerMain addScore:400000];
-    [playerMain addScore:600000];
-    playerMain.totalTime = 12000;
-    playerMain.totalConsumed = 2000;
-    
     
     NSLog(@"latitude %+.6f, longitude %+.6f\n",userLocation.coordinate.latitude,userLocation.coordinate.longitude);
     [self startLocationManager]; //start location manager to get location for leaderboards
@@ -212,23 +202,14 @@
  
 
  - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-     
      if ([segue.identifier isEqualToString:@"playSeg"]){
          PlayViewController *playViewController = segue.destinationViewController;
          playViewController.userLocation = self.userLocation;
-         playViewController.thePlayer = self.playerMain;
      }
      else if ([segue.identifier isEqualToString:@"leaderSeg"]){
          LeaderViewController *destViewController = segue.destinationViewController;
          destViewController.userLocation = self.userLocation;
      }
-     else if ([segue.identifier isEqualToString:@"statSeg"]){
-         StatViewController *statViewController = segue.destinationViewController;
-         statViewController.thePlayer = self.playerMain;
-     }
-
-     
-     
  }
 
 

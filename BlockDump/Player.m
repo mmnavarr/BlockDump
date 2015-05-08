@@ -39,11 +39,6 @@
     return self;
 }
 
--(void) averageScore {
-    
-    
-}
-
 -(void) addScore:(int)score
 {
     if (score > _highscore)
