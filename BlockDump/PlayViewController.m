@@ -21,15 +21,23 @@
 @synthesize userLocation;
 @synthesize characterView;
 @synthesize timer;
+@synthesize motionManager;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [[self navigationController] setNavigationBarHidden:NO animated:YES];
+    [[self navigationController] setNavigationBarHidden:YES animated:YES];
     // Do any additional setup after loading the view.
-    CGRect bounds = [self.view bounds];
+    [self setupSounds];
     secondCount = 0;
     score = 0;
     
+    //for accelerometer/gyro data
+    motionManager = [[CMMotionManager alloc] init];
+    
+    if (motionManager.isDeviceMotionAvailable){
+        motionManager.deviceMotionUpdateInterval = 1.0 / 60.0;
+        [motionManager startDeviceMotionUpdatesUsingReferenceFrame:CMAttitudeReferenceFrameXTrueNorthZVertical];
+    }
     
     //initialize arrays
     spriteViews = [[NSMutableArray alloc] init];
@@ -49,8 +57,7 @@
     //height and width of the game grid for sprite spawning
     gridW = 257;
     gridH = 397;
-    toW = gridW/2;
-    toH = gridH/2;
+    
     topLeft = CGPointMake(50.0, 150.0); //top left corner of the grid
     topRight = CGPointMake(gridW + 50, 150);//top right
     bottomLeft = CGPointMake(50, gridH + 150);//etc
@@ -131,7 +138,7 @@
         //game ends
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Game Over"
                                                         message:[NSString stringWithFormat:@"You have run out of time. Score: %i", score]
-                                                       delegate:nil
+                                                       delegate:self
                                               cancelButtonTitle:@"Restart"
                                               otherButtonTitles:@"Home Page", @"Leaderboards", nil];
         [alert setAlertViewStyle:UIAlertViewStyleDefault];
@@ -430,10 +437,10 @@
     float x = self.view.center.x;
     float y = self.view.center.y;
     
-    int duration = 10;
+    int duration = 7;
     [UIView animateWithDuration: duration
                           delay: 0.0
-                        options: UIViewAnimationOptionBeginFromCurrentState
+                        options: UIViewAnimationOptionCurveLinear
                      animations: ^{ [sprite setFrame:CGRectMake(x, y
                                                                 , gridW/15, gridH/20)]; }
                      completion: ^(BOOL fin) { [self finishedAnimation:nil finished:fin context:sprite]; }];
@@ -465,7 +472,7 @@
         [self restart];
     }
     else if ([title isEqualToString:@"Leaderboards"]){
-        
+        [self performSegueWithIdentifier:@"playToLeader" sender:self];
     }
     else if ([title isEqualToString:@"Home Page"]){
         [self.navigationController popViewControllerAnimated:YES];
@@ -486,6 +493,24 @@
                                            selector:@selector(updateLabel:)
                                            userInfo:nil
                                             repeats:YES];
+}
+
+- (void) setupSounds {
+    //Set up sound for game end
+    NSString *soundPath = [[NSBundle mainBundle] pathForResource:@"Applause"
+                                                          ofType:@"wav"];
+    NSURL *fileURL = [[NSURL alloc] initFileURLWithPath:soundPath];
+    gameEnded = [[AVAudioPlayer alloc] initWithContentsOfURL:fileURL
+                                                       error:nil];
+    gameEnded.volume = 0.3;
+    
+    soundPath = [[NSBundle mainBundle] pathForResource:@"Western-Gunshot"
+                                                ofType:@"wav"];
+    fileURL = [[NSURL alloc] initFileURLWithPath:soundPath];
+    gameStarted = [[AVAudioPlayer alloc] initWithContentsOfURL:fileURL
+                                                         error:nil];
+    gameStarted.volume = 0.3;
+    
 }
 /*
 #pragma mark - Navigation

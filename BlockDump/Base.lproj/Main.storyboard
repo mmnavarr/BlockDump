@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7702" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="eJN-jM-VIS">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7531" systemVersion="14C1514" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="eJN-jM-VIS">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7520"/>
     </dependencies>
     <scenes>
         <!--startView-->
@@ -70,6 +70,7 @@
                     <connections>
                         <outlet property="scoreLabel" destination="K9s-L9-mk6" id="VcF-22-hZw"/>
                         <outlet property="timeLabel" destination="R3J-Cs-iGx" id="uYY-Ir-64p"/>
+                        <segue destination="qjZ-5O-gZA" kind="show" identifier="playToLeader" id="Ul4-6i-gYU"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3iU-nU-NPB" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -214,7 +215,7 @@
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" lineBreakMode="tailTruncation" numberOfLines="20" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="be9-l3-kOL">
                                 <rect key="frame" x="16" y="-36" width="311" height="636"/>
-                                <mutableString key="text">Block Dump is a game designed around dumping blocks. The game is played by controlling the character in the middle of the screen via rotating the wheel at the bottom of the screen. The player's goal is to collect the falling blocks by facing the middle character at a block.
+                                <string key="text">Block Dump is a game designed around dumping blocks. The game is played by controlling the character in the middle of the screen via rotating the wheel at the bottom of the screen. The player's goal is to collect the falling blocks by facing the middle character at a block.
 
 There are currently four types of blocks in the game, and collecting each has a different impact on the player's score and time:
 1. Red Triangle: Reduces the player's score and time left by 10 points/seconds respectively.
@@ -222,7 +223,7 @@ There are currently four types of blocks in the game, and collecting each has a 
 3. Blue Hexagon: Increases the player's score by 5 points.
 4. Yellow Star: Increases the player's score and time left by 10 points/second respectively.
 
-Clearly, some blocks are beneficial, and others aren't. It is up to the player to avoid bad blocks and achieve the highest score possible.</mutableString>
+Clearly, some blocks are beneficial, and others aren't. It is up to the player to avoid bad blocks and achieve the highest score possible.</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
@@ -257,4 +258,7 @@ Clearly, some blocks are beneficial, and others aren't. It is up to the player t
     <resources>
         <image name="bdlogo.png" width="351" height="120"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="Ul4-6i-gYU"/>
+    </inferredMetricsTieBreakers>
 </document>

@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		222E849C1AFC34BC00E7A219 /* Applause.wav in Resources */ = {isa = PBXBuildFile; fileRef = 222E849A1AFC34BC00E7A219 /* Applause.wav */; };
+		222E849D1AFC34BC00E7A219 /* Western-Gunshot.wav in Resources */ = {isa = PBXBuildFile; fileRef = 222E849B1AFC34BC00E7A219 /* Western-Gunshot.wav */; };
 		22352E0A1AFA90020045A034 /* character.png in Resources */ = {isa = PBXBuildFile; fileRef = 22352E091AFA90020045A034 /* character.png */; };
 		22352E0F1AFAC8EE0045A034 /* triangle_sprite.png in Resources */ = {isa = PBXBuildFile; fileRef = 22352E0B1AFAC8EE0045A034 /* triangle_sprite.png */; };
 		22352E101AFAC8EE0045A034 /* circle_sprite.png in Resources */ = {isa = PBXBuildFile; fileRef = 22352E0C1AFAC8EE0045A034 /* circle_sprite.png */; };
@@ -63,6 +65,8 @@
 
 /* Begin PBXFileReference section */
 		1CF208A50012C532C5C9063C /* Pods-BlockDump.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BlockDump.release.xcconfig"; path = "Pods/Target Support Files/Pods-BlockDump/Pods-BlockDump.release.xcconfig"; sourceTree = "<group>"; };
+		222E849A1AFC34BC00E7A219 /* Applause.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Applause.wav; sourceTree = "<group>"; };
+		222E849B1AFC34BC00E7A219 /* Western-Gunshot.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "Western-Gunshot.wav"; sourceTree = "<group>"; };
 		22352E091AFA90020045A034 /* character.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = character.png; sourceTree = "<group>"; };
 		22352E0B1AFAC8EE0045A034 /* triangle_sprite.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = triangle_sprite.png; sourceTree = "<group>"; };
 		22352E0C1AFAC8EE0045A034 /* circle_sprite.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = circle_sprite.png; sourceTree = "<group>"; };
@@ -196,6 +200,8 @@
 		9B74A59A1AE5FFFA00946788 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				222E849A1AFC34BC00E7A219 /* Applause.wav */,
+				222E849B1AFC34BC00E7A219 /* Western-Gunshot.wav */,
 				9B50FB9D1AFBDDE9002EF6E2 /* bdlogo.png */,
 				2260BCC11AEDB50500CD8F8D /* radiobox-blank.png */,
 				22352E091AFA90020045A034 /* character.png */,
@@ -330,6 +336,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				222E849D1AFC34BC00E7A219 /* Western-Gunshot.wav in Resources */,
 				9B50FB9E1AFBDDE9002EF6E2 /* bdlogo.png in Resources */,
 				9BA6E1231AE6B82900D7B03E /* ic_hiscore2.png in Resources */,
 				9BA6E1141AE608B000D7B03E /* ic_howto.png in Resources */,
@@ -343,6 +350,7 @@
 				9BA6E1121AE608B000D7B03E /* ic_hiscore.png in Resources */,
 				2260BCC21AEDB50500CD8F8D /* radiobox-blank.png in Resources */,
 				22352E0F1AFAC8EE0045A034 /* triangle_sprite.png in Resources */,
+				222E849C1AFC34BC00E7A219 /* Applause.wav in Resources */,
 				22C5CC381AF9698F00E54B10 /* circle2.png in Resources */,
 				2260BCB11AEC155F00CD8F8D /* Main.storyboard in Resources */,
 				9B74A5AB1AE5FFFA00946788 /* LaunchScreen.xib in Resources */,

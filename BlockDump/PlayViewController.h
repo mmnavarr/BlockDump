@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 @import AVFoundation;
 @import CoreLocation;
+@import CoreMotion;
 
 @interface PlayViewController : UIViewController <UIGestureRecognizerDelegate>
 {
@@ -26,7 +27,7 @@
     CGPoint bottomLeft;
     CGPoint bottomRight;
     
-    AVAudioPlayer *blockEaten;
+    AVAudioPlayer *gameStarted;
     AVAudioPlayer *gameEnded;
     NSMutableArray *spriteNames;
     NSMutableArray *spriteViews;
@@ -37,5 +38,6 @@
 @property(strong, nonatomic) UIImageView * characterView;
 @property(strong, nonatomic) CLLocation *userLocation;
 @property(strong, nonatomic) NSTimer * timer;
+@property(strong, nonatomic) CMMotionManager *motionManager;
 
 @end
