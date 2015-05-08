@@ -44,6 +44,7 @@
 @property(strong, nonatomic) NSTimer * timer;
 @property(strong, nonatomic) CMMotionManager *motionManager;
 @property(nonatomic) Player *thePlayer;
+@property(strong, nonatomic) NSMutableData *responseData;
 
 
 @end

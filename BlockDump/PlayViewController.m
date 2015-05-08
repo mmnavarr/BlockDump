@@ -24,6 +24,7 @@
 @synthesize timer;
 @synthesize motionManager;
 @synthesize thePlayer = _thePlayer;
+@synthesize responseData = _responseData;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -31,7 +32,7 @@
     // Do any additional setup after loading the view.
     [self setupSounds];
     secondCount = 0;
-    score = 0;
+    score = 650;
     characterState = 0;
     blockCollisions = 0;
     highscore = false;
@@ -686,18 +687,67 @@
     else if ([title isEqualToString:@"Done"]){
         UITextField *name = [alertView textFieldAtIndex:0];
         NSString *stringName = name.text;
-        //post goes here, stringName is the username, score is the score
+        
+        //MAKE ASYNC HTTPOST REQUEST TO POST HIGHSCORE
+        [self asyncPOST:stringName];
+        
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Game Over"
                                                         message:[NSString stringWithFormat:@"You have run out of time. Score: %i", score]
                                                        delegate:self
                                               cancelButtonTitle:@"Restart"
                                               otherButtonTitles:@"Home Page", @"Leaderboards", nil];
         [alert setAlertViewStyle:UIAlertViewStyleDefault];
-        
         [alert show];
     }
 }
 
+
+- (void) asyncPOST:(NSString *)name
+{
+    NSLog(@"ASYNC POST BEGIN");
+    NSURL *url = [NSURL URLWithString:@"http://www.cyberplays.com/blockdump/post_highscore.php"];
+    NSString *post = [NSString stringWithFormat:@"name=%@&score=%d",name,score];
+    NSLog(@"Post: %@", post);
+    
+    NSData *postData = [post dataUsingEncoding:NSASCIIStringEncoding allowLossyConversion:YES];
+    NSString *postLength = [NSString stringWithFormat:@"%lu",(unsigned long)[postData length]];
+    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
+    
+    [request setURL:url];
+    [request setHTTPMethod:@"POST"];
+    [request setValue:postLength forHTTPHeaderField:@"Content-Length"];
+    [request setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
+    [request setHTTPBody:postData];
+    NSURLConnection *conn = [[NSURLConnection alloc] initWithRequest:request delegate:self];
+    
+    if(conn) {
+        NSLog(@"Connection Successful");
+    } else {
+        NSLog(@"Connection could not be made");
+    }
+}
+
+- (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response {
+    //RESPONSE RECEIVED, INIT IVAR SO WE CAN APPEND DATA TO IT IN didReceiveData
+    _responseData = [[NSMutableData alloc] init];
+}
+
+- (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data {
+    //APPEND NEW DATA TO INSTANCE VARIABLE
+    [_responseData appendData:data];
+}
+
+- (NSCachedURLResponse *)connection:(NSURLConnection *)connection willCacheResponse:(NSCachedURLResponse*)cachedResponse {
+    //RETURN NIL TO INDICATE CACHE DATA IS NOT REQUIRED HERE
+    return nil;
+}
+
+- (void)connectionDidFinishLoading:(NSURLConnection *)connection {
+    // The request is complete and data has been received
+    NSLog(@"Succeeded! Received %d bytes of data.\n",(int)[_responseData length]);
+    NSString *txt = [[NSString alloc] initWithData:_responseData encoding: NSASCIIStringEncoding];
+    NSLog(@"The txt %@\n", txt);
+}
 
 
 
