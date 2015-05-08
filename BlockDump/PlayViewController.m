@@ -28,11 +28,11 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [[self navigationController] setNavigationBarHidden:NO animated:YES];
+    [[self navigationController] setNavigationBarHidden:YES animated:YES];
     // Do any additional setup after loading the view.
     [self setupSounds];
     secondCount = 0;
-    score = 650;
+    score = 0;
     characterState = 0;
     blockCollisions = 0;
     highscore = false;
@@ -583,41 +583,38 @@
 {
     UIImageView *sprite = (UIImageView *)context;
     
-    if ([animationId isEqual: @"end"])
-    {
-        [spriteViews removeObject:sprite];
-        [sprite removeFromSuperview];
-    }
-    else {
-        if (characterState == sprite.tag){
-            blockCollisions++;
-            if ([sprite.restorationIdentifier isEqualToString:@"triangle_sprite"]){
-                score -= 10;
-                timeLeft -=10;
-                _scoreLabel.text = [NSString stringWithFormat:@"Score: %i", score];
-                _timeLabel.text = [NSString stringWithFormat:@"Time: %is", (int)timeLeft];
-            }
-            else if([sprite.restorationIdentifier isEqualToString:@"circle_sprite"]){
-                score -= 5;
-                _scoreLabel.text = [NSString stringWithFormat:@"Score: %i", score];
-                _timeLabel.text = [NSString stringWithFormat:@"Time: %is", (int)timeLeft];
-            }
-            else if ([sprite.restorationIdentifier isEqualToString:@"hex_sprite"]){
-                score += 5;
-                _scoreLabel.text = [NSString stringWithFormat:@"Score: %i", score];
-                _timeLabel.text = [NSString stringWithFormat:@"Time: %is", (int)timeLeft];
-            }
-            else{
-                score += 10;
-                timeLeft += 10;
-                _scoreLabel.text = [NSString stringWithFormat:@"Score: %i", score];
-                _timeLabel.text = [NSString stringWithFormat:@"Time: %is", (int)timeLeft];
-            }
+    //the the character state matches the block start side when it's animation ends,
+    //then there must be a collision
+    if (characterState == sprite.tag){
+        blockCollisions++;
+        //check the type of block using restorationIdentifier
+        if ([sprite.restorationIdentifier isEqualToString:@"triangle_sprite"]){
+            score -= 10;
+            timeLeft -=10;
+            _scoreLabel.text = [NSString stringWithFormat:@"Score: %i", score];
+            _timeLabel.text = [NSString stringWithFormat:@"Time: %is", (int)timeLeft];
         }
-        [spriteViews removeObject:sprite];
-        [sprite removeFromSuperview];
-        
+        else if([sprite.restorationIdentifier isEqualToString:@"circle_sprite"]){
+            score -= 5;
+            _scoreLabel.text = [NSString stringWithFormat:@"Score: %i", score];
+            _timeLabel.text = [NSString stringWithFormat:@"Time: %is", (int)timeLeft];
+        }
+        else if ([sprite.restorationIdentifier isEqualToString:@"hex_sprite"]){
+            score += 5;
+            _scoreLabel.text = [NSString stringWithFormat:@"Score: %i", score];
+            _timeLabel.text = [NSString stringWithFormat:@"Time: %is", (int)timeLeft];
+        }
+        else{
+            score += 10;
+            timeLeft += 10;
+            _scoreLabel.text = [NSString stringWithFormat:@"Score: %i", score];
+            _timeLabel.text = [NSString stringWithFormat:@"Time: %is", (int)timeLeft];
+        }
     }
+    [spriteViews removeObject:sprite];
+    [sprite removeFromSuperview];
+        
+    
     
 }
 
