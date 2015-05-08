@@ -8,6 +8,7 @@
 
 #import "StartViewController.h"
 #import "LeaderViewController.h"
+#import "StatViewController.h"
 #import "PlayViewController.h"
 #import "HTPressableButton.h"
 #import "UIColor+HTColor.h"
@@ -23,33 +24,31 @@
 
 @end
 
+
+
 @implementation StartViewController
 
 @synthesize userLocation;
 @synthesize locationManager;
-@synthesize thePlayer;
+@synthesize playerMain;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view, typically from a nib.
     
-    //Hide Navbar
+    //HIDE NAVBAR
     [[self navigationController] setNavigationBarHidden:YES animated:YES];
     
     //INITIALIZE PLAYER
-    thePlayer = [[Player alloc] init];
-    thePlayer.name = @"The Player";
-    [thePlayer addScore:200000];
-    [thePlayer addScore:400000];
-    [thePlayer addScore:600000];
-    thePlayer.totalTime = 12000;
-    thePlayer.totalConsumed = 2000;
+    playerMain = [[Player alloc] init];
+    playerMain.name = @"The Player";
+    [playerMain addScore:200000];
+    [playerMain addScore:400000];
+    [playerMain addScore:600000];
+    playerMain.totalTime = 12000;
+    playerMain.totalConsumed = 2000;
     
     
-    NSLog(@"latitude %+.6f, longitude %+.6f\n",
-          userLocation.coordinate.latitude,
-          userLocation.coordinate.longitude);
-    
+    NSLog(@"latitude %+.6f, longitude %+.6f\n",userLocation.coordinate.latitude,userLocation.coordinate.longitude);
     [self startLocationManager]; //start location manager to get location for leaderboards
     
     
@@ -119,7 +118,7 @@
 
 - (IBAction)holdDown:(id) sender
 {
-    //Move image down with button press
+    //MOVE IMAGE DOWN WITH PRESS
     HTPressableButton *tmp = sender;
     switch (tmp.tag) {
         case 1:
@@ -148,7 +147,7 @@
 
 - (IBAction)holdRelease:(id) sender
 {
-    //Move image up with button release
+    //MOVE IMAGE UP WITH RELEASE
     HTPressableButton *tmp = sender;
     switch (tmp.tag) {
         case 1:
@@ -180,16 +179,6 @@
             NSLog(@"Hold release button default");
             break;
     }
-}
-
-
-//USE THESE TO SET THE BUTTON LOCATIONS SO ITS SCALES FOR iPhone 4/5/6
-+ (CGFloat) window_height   {
-    return [UIScreen mainScreen].applicationFrame.size.height;
-}
-
-+ (CGFloat) window_width   {
-    return [UIScreen mainScreen].applicationFrame.size.width;
 }
 
 - (void) startLocationManager{
@@ -225,13 +214,20 @@
  - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
      
      if ([segue.identifier isEqualToString:@"playSeg"]){
-         PlayViewController *destViewController = segue.destinationViewController;
-         destViewController.userLocation = self.userLocation;
+         PlayViewController *playViewController = segue.destinationViewController;
+         playViewController.userLocation = self.userLocation;
+         playViewController.thePlayer = self.playerMain;
      }
      else if ([segue.identifier isEqualToString:@"leaderSeg"]){
          LeaderViewController *destViewController = segue.destinationViewController;
          destViewController.userLocation = self.userLocation;
      }
+     else if ([segue.identifier isEqualToString:@"statSeg"]){
+         StatViewController *statViewController = segue.destinationViewController;
+         statViewController.thePlayer = self.playerMain;
+     }
+
+     
      
  }
 

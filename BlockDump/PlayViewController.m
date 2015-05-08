@@ -7,11 +7,10 @@
 //
 
 #import "PlayViewController.h"
-
 #define ARC4RANDOM_MAX 0x100000000
 
-@interface PlayViewController ()
 
+@interface PlayViewController ()
 @end
 
 @implementation PlayViewController
@@ -21,14 +20,19 @@
 @synthesize userLocation;
 @synthesize characterView;
 @synthesize timer;
+@synthesize thePlayer = _thePlayer;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    //SHOW NAVNAR
     [[self navigationController] setNavigationBarHidden:NO animated:YES];
     // Do any additional setup after loading the view.
-    CGRect bounds = [self.view bounds];
     secondCount = 0;
     score = 0;
+    
+    
+    //CHECK TO SEE IF THE PLAYER GOT PASSED
+    NSLog(@"The players name: %@", _thePlayer.name);
     
     
     //initialize arrays
@@ -40,7 +44,7 @@
     [spriteNames addObject:@"hex_sprite"];
     [spriteNames addObject:@"star_sprite"];
     
-    timeLeft = 60.0;
+    timeLeft = 5.0;
     
     //height and width of the screen
     CGFloat w = CGRectGetWidth(self.view.bounds);
@@ -131,7 +135,7 @@
         //game ends
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Game Over"
                                                         message:[NSString stringWithFormat:@"You have run out of time. Score: %i", score]
-                                                       delegate:nil
+                                                       delegate:self
                                               cancelButtonTitle:@"Restart"
                                               otherButtonTitles:@"Home Page", @"Leaderboards", nil];
         [alert setAlertViewStyle:UIAlertViewStyleDefault];
@@ -461,7 +465,6 @@
 - (void) alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex   {
     NSString *title = [alertView buttonTitleAtIndex:buttonIndex];
     if ([title isEqualToString:@"Restart"]){
-        
         [self restart];
     }
     else if ([title isEqualToString:@"Leaderboards"]){

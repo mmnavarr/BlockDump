@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 @import AVFoundation;
 @import CoreLocation;
+#import "Player.h"
 
 @interface PlayViewController : UIViewController <UIGestureRecognizerDelegate>
 {
@@ -37,5 +38,7 @@
 @property(strong, nonatomic) UIImageView * characterView;
 @property(strong, nonatomic) CLLocation *userLocation;
 @property(strong, nonatomic) NSTimer * timer;
+@property(nonatomic) Player *thePlayer;
+
 
 @end
