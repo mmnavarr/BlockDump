@@ -71,6 +71,12 @@
     NSURLRequest *request = [NSURLRequest requestWithURL:url];
     //CREATE URL CONNECTION TO FIRE REQUREST
     NSURLConnection *conn = [[NSURLConnection alloc] initWithRequest:request delegate:self];
+    
+    if(conn) {
+        NSLog(@"Connection Successful");
+    } else {
+        NSLog(@"Connection could not be made");
+    }
 }
 
 - (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response {
@@ -128,10 +134,10 @@
                 for (NSDictionary *itemDic in itemArray){
                     Player *temp;
                     
-                    NSString *name = [dic objectForKey:@"player_name"];
-                    NSNumber *scoreX = (NSNumber *)[dic objectForKey:@"player_score"];
-                    NSNumber *latX = (NSNumber *)[dic objectForKey:@"player_lat"];
-                    NSNumber *lngX = (NSNumber *)[dic objectForKey:@"player_lng"];
+                    NSString *name = [itemDic objectForKey:@"player_name"];
+                    NSNumber *scoreX = (NSNumber *)[itemDic objectForKey:@"player_score"];
+                    NSNumber *latX = (NSNumber *)[itemDic objectForKey:@"player_lat"];
+                    NSNumber *lngX = (NSNumber *)[itemDic objectForKey:@"player_lng"];
                     NSLog(@"Player name: %@ with highscore of %@ located @ (%@,%@)", name, scoreX, latX, lngX);
                     
                     //NOW CONVERT NSNUMBER TO TYPES PLAYER OBJECT NEEDS
