@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7702" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="eJN-jM-VIS">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7531" systemVersion="14C1514" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="eJN-jM-VIS">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7520"/>
     </dependencies>
     <scenes>
         <!--startView-->
@@ -70,6 +70,7 @@
                     <connections>
                         <outlet property="scoreLabel" destination="K9s-L9-mk6" id="VcF-22-hZw"/>
                         <outlet property="timeLabel" destination="R3J-Cs-iGx" id="uYY-Ir-64p"/>
+                        <segue destination="qjZ-5O-gZA" kind="show" identifier="playToLeader" id="Ul4-6i-gYU"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3iU-nU-NPB" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -291,4 +292,7 @@
         <image name="bdlogo.png" width="351" height="120"/>
         <image name="character.png" width="29" height="48"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="Ul4-6i-gYU"/>
+    </inferredMetricsTieBreakers>
 </document>

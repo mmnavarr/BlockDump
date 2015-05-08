@@ -27,7 +27,7 @@
     CGPoint bottomLeft;
     CGPoint bottomRight;
     
-    AVAudioPlayer *blockEaten;
+    AVAudioPlayer *gameStarted;
     AVAudioPlayer *gameEnded;
     NSMutableArray *spriteNames;
     NSMutableArray *spriteViews;
