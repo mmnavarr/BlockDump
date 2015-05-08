@@ -653,6 +653,14 @@
         UITextField *name = [alertView textFieldAtIndex:0];
         NSString *stringName = name.text;
         //post goes here, stringName is the username, score is the score
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Game Over"
+                                                        message:[NSString stringWithFormat:@"You have run out of time. Score: %i", score]
+                                                       delegate:self
+                                              cancelButtonTitle:@"Restart"
+                                              otherButtonTitles:@"Home Page", @"Leaderboards", nil];
+        [alert setAlertViewStyle:UIAlertViewStyleDefault];
+        
+        [alert show];
     }
 }
 
