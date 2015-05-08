@@ -32,7 +32,7 @@
     // Do any additional setup after loading the view.
     [self setupSounds];
     secondCount = 0;
-    score = 550;
+    score = 650;
     characterState = 0;
     blockCollisions = 0;
     highscore = false;
@@ -650,12 +650,20 @@
         
         [alert show];
     }
-    else if ([title isEqualToString:@"Name"]){
+    else if ([title isEqualToString:@"Done"]){
         UITextField *name = [alertView textFieldAtIndex:0];
         NSString *stringName = name.text;
         
         //MAKE ASYNC HTTPOST REQUEST TO POST HIGHSCORE
         [self asyncPOST:stringName];
+        
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Game Over"
+                                                        message:[NSString stringWithFormat:@"You have run out of time. Score: %i", score]
+                                                       delegate:self
+                                              cancelButtonTitle:@"Restart"
+                                              otherButtonTitles:@"Home Page", @"Leaderboards", nil];
+        [alert setAlertViewStyle:UIAlertViewStyleDefault];
+        [alert show];
     }
 }
 
