@@ -16,5 +16,6 @@
 @property(strong, nonatomic) IBOutlet UILabel *tgamesLabel;
 @property(strong, nonatomic) IBOutlet UILabel *ttimeLabel;
 @property(strong, nonatomic) IBOutlet UILabel *tspritesLabel;
+@property(nonatomic) Player *thePlayer;
 
 @end

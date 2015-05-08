@@ -21,26 +21,23 @@
 @synthesize tgamesLabel = _tgamesLabel;
 @synthesize ttimeLabel = _ttimeLabel;
 @synthesize tspritesLabel = _tspritesLabel;
+@synthesize thePlayer = _thePlayer;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    //LOAD VIEW THAT STATS ARE IN AND STYLE IT
+    UIView *view = (UIButton *)[self.view viewWithTag:1];
+    view.layer.cornerRadius = 7;
+    view.layer.masksToBounds = YES;
+    view.layer.borderColor = [UIColor purpleColor].CGColor;
+    view.layer.borderWidth = 5.0f;
+    
+    //SHOW NAVBAR AGAIN
     [[self navigationController] setNavigationBarHidden:NO animated:YES];
     
-    //GET PLAYER FROM STARTVIEWCONTROLLER
-    /*StartViewController *startView = [[StartViewController alloc] init];
-    Player *player = startView.thePlayer;
-    NSLog(@"The players name: %@", player.name);*/
-    
-    //INITIALIZE PLAYER
-    Player *thePlayer = [[Player alloc] init];
-    thePlayer.name = @"The Player";
-    [thePlayer addScore:201050];
-    [thePlayer addScore:408300];
-    [thePlayer addScore:619020];
-    thePlayer.totalTime = 206;
-    thePlayer.totalConsumed = 1013;
-    
-    [self setLabels:(Player *) thePlayer];
+    //POPULATE THE LABELS WITH PLAYER OBJECT DATA
+    [self setLabels];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -49,21 +46,31 @@
 }
 
 
-- (void) setLabels:(Player *) player {
-    //CONVERT INTEGERS TO STRING
-    NSString *s1 = [NSString stringWithFormat:@"%d", (int)player.highscore];
-    NSString *s2 = [NSString stringWithFormat:@"%d", (int)player.totalScore];
-    NSString *s3 = [NSString stringWithFormat:@"%d", (int)player.avgScore];
-    NSString *s4 = [NSString stringWithFormat:@"%d", (int)player.totalGames];
-    NSString *s5 = [NSString stringWithFormat:@"%d", (int)player.totalTime];
-    NSString *s6 = [NSString stringWithFormat:@"%d", (int)player.totalConsumed];
+- (void) setLabels {
+    //GET USER DEFAULTS DATA
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSInteger highScore = [defaults integerForKey:@"HighScore"];
+    NSInteger totalScore = [defaults integerForKey:@"TotalScore"];
+    NSInteger totalGames = [defaults integerForKey:@"TotalGames"];
+    NSInteger avgScore = totalScore/totalGames;
+    NSInteger totalTime = [defaults integerForKey:@"TotalTime"];
+    //NSInteger totalSprite = [defaults integerForKey:@"TotalSprite"];
     
+    //CONVERT INTEGERS TO STRING
+    NSString *s1 = [NSString stringWithFormat:@"%d", (int)highScore];
+    NSString *s2 = [NSString stringWithFormat:@"%d", (int)totalScore];
+    NSString *s3 = [NSString stringWithFormat:@"%d", (int)avgScore];
+    NSString *s4 = [NSString stringWithFormat:@"%d", (int)totalGames];
+    NSString *s5 = [NSString stringWithFormat:@"%d", (int)totalTime];
+    //NSString *s6 = [NSString stringWithFormat:@"%d", (int)totalSprite];
+    
+    //SET LABELS
     _highscoreLabel.text = s1;
     _tscoreLabel.text = s2;
     _avgscoreLabel.text = s3;
     _tgamesLabel.text = s4;
     _ttimeLabel.text = s5;
-    _tspritesLabel.text = s6;
+    _tspritesLabel.text = 0;
 }
 
 /*

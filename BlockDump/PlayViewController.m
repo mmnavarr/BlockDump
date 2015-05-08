@@ -7,11 +7,12 @@
 //
 
 #import "PlayViewController.h"
-
+#import "LeaderViewController.h"
+#import "StartViewController.h"
 #define ARC4RANDOM_MAX 0x100000000
 
-@interface PlayViewController ()
 
+@interface PlayViewController ()
 @end
 
 @implementation PlayViewController
@@ -22,6 +23,7 @@
 @synthesize characterView;
 @synthesize timer;
 @synthesize motionManager;
+@synthesize thePlayer = _thePlayer;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -40,6 +42,7 @@
         [motionManager startDeviceMotionUpdatesUsingReferenceFrame:CMAttitudeReferenceFrameXTrueNorthZVertical];
     }
     
+    
     //initialize arrays
     spriteViews = [[NSMutableArray alloc] init];
     
@@ -49,7 +52,7 @@
     [spriteNames addObject:@"hex_sprite"];
     [spriteNames addObject:@"star_sprite"];
     
-    timeLeft = 60.0;
+    timeLeft = 5.0;
     
     //height and width of the screen
     w = CGRectGetWidth(self.view.bounds);
@@ -159,6 +162,9 @@
     secondCount++;
     timeLeft = timeLeft - 1;
     if (timeLeft <= 0){
+        [self finishedGame];
+        
+        
         //game ends
         [gameEnded play];
         [self.view.layer removeAllAnimations];
@@ -175,8 +181,7 @@
         
     }
     //generate/add a sprite every two seconds
-    if (secondCount == 2){
-        secondCount = 0;
+    if (secondCount%2 == 0){
         [self spawnSprite];
     }
     _timeLabel.text = [NSString stringWithFormat:@"Time: %is", (int)timeLeft];
@@ -579,19 +584,58 @@
     
 }
 
+- (void) finishedGame {
+    //GET USER DEFAULTS AND UPDATE PLAYER DATA
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    
+    //SEE IF ITS THE NEW HIGHSCORE
+    NSInteger highScore = [defaults integerForKey:@"HighScore"];
+    if (score > highScore)
+        [defaults setInteger:score forKey:@"HighScore"];
+
+    //INCR TOTAL SCORE
+    //NSInteger totalScore = [defaults integerForKey:@"TotalScore"] + score;
+    NSInteger totalScore = [defaults integerForKey:@"TotalScore"] + 10000;
+    [defaults setInteger:totalScore forKey:@"TotalScore"];
+    
+    //INCR TOTAL GAMES PLAYED
+    NSInteger totalGames = [defaults integerForKey:@"TotalGames"] + 1;
+    [defaults setInteger:totalGames forKey:@"TotalGames"];
+    
+    //SET AVG SCORE
+    NSInteger averageScore = totalScore/totalGames;
+    [defaults setInteger:averageScore forKey:@"AvgScore"];
+    
+    //INCR SECOND COUNT
+    NSInteger totalTime = [defaults integerForKey:@"TotalTime"] + secondCount;
+    [defaults setInteger:totalTime forKey:@"TotalTime"];
+    
+    //NSInteger totalSprite = [defaults integerForKey:@"TotalSprite"] + spriteCollisions;
+    //[defaults setInteger:totalSprite forKey:@"TotalSprite"];
+    
+    [defaults synchronize];
+
+}
+
+
+
+
 - (void) alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex   {
     NSString *title = [alertView buttonTitleAtIndex:buttonIndex];
+    
     if ([title isEqualToString:@"Restart"]){
-        
         [self restart];
     }
     else if ([title isEqualToString:@"Leaderboards"]){
         [self performSegueWithIdentifier:@"playToLeader" sender:self];
     }
     else if ([title isEqualToString:@"Home Page"]){
-        [self.navigationController popViewControllerAnimated:YES];
+        [self performSegueWithIdentifier:@"playToStart" sender:self];
     }
 }
+
+
+
 
 - (void) restart {
     

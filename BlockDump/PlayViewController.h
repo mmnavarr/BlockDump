@@ -10,6 +10,7 @@
 @import AVFoundation;
 @import CoreLocation;
 @import CoreMotion;
+#import "Player.h"
 
 @interface PlayViewController : UIViewController <UIGestureRecognizerDelegate>
 {
@@ -40,5 +41,7 @@
 @property(strong, nonatomic) CLLocation *userLocation;
 @property(strong, nonatomic) NSTimer * timer;
 @property(strong, nonatomic) CMMotionManager *motionManager;
+@property(nonatomic) Player *thePlayer;
+
 
 @end
