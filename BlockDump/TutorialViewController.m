@@ -19,8 +19,8 @@
     [super viewDidLoad];
     [[self navigationController] setNavigationBarHidden:NO animated:YES];
     
-    //Disabled rounded rectangular button
-    CGRect frame1 = CGRectMake(50, 120, 275, 60);
+    //HEADER
+    CGRect frame1 = CGRectMake(40, 110, 290, 60);
     HTPressableButton *howtoplay = [[HTPressableButton alloc] initWithFrame:frame1 buttonStyle:HTPressableButtonStyleRounded];
     howtoplay.disabledButtonColor = [UIColor ht_grapeFruitColor];
     howtoplay.disabledShadowColor = [UIColor ht_grapeFruitDarkColor];
@@ -29,8 +29,8 @@
     [howtoplay setTitle:@"Collect The Blocks!" forState:UIControlStateNormal];
     [self.view addSubview:howtoplay];
     
-    //Disabled rounded rectangular button
-    CGRect frame2 = CGRectMake(50, 565, 275, 60);
+    //PLAY BUTTON -> SEGUE TO PLAYVIEWCONTROLLER
+    CGRect frame2 = CGRectMake(40, 565, 290, 60);
     HTPressableButton *play = [[HTPressableButton alloc] initWithFrame:frame2 buttonStyle:HTPressableButtonStyleRounded];
     play.buttonColor = [UIColor ht_grapeFruitColor];
     play.shadowColor = [UIColor ht_grapeFruitDarkColor];

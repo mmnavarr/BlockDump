@@ -32,9 +32,8 @@
     //HIDE NAVBAR
     [[self navigationController] setNavigationBarHidden:YES animated:YES];
     
-    //start location manager to get location for leaderboards
-    [self startLocationManager];
-    NSLog(@"latitude %+.6f, longitude %+.6f\n",userLocation.coordinate.latitude,userLocation.coordinate.longitude);
+    
+    [self startLocationManager]; //start location manager to get location for leaderboards
     
     
     /* All buttons are made with the initWithFrame using a CGRect as the argument.
