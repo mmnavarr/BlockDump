@@ -30,6 +30,7 @@
     [self setupSounds];
     secondCount = 0;
     score = 0;
+    characterState = 0;
     
     //for accelerometer/gyro data
     motionManager = [[CMMotionManager alloc] init];
@@ -51,8 +52,8 @@
     timeLeft = 60.0;
     
     //height and width of the screen
-    CGFloat w = CGRectGetWidth(self.view.bounds);
-    CGFloat h = CGRectGetHeight(self.view.bounds);
+    w = CGRectGetWidth(self.view.bounds);
+    h = CGRectGetHeight(self.view.bounds);
     
     //height and width of the game grid for sprite spawning
     gridW = 257;
@@ -96,6 +97,8 @@
     [self.view bringSubviewToFront:characterView];
     [self.view addSubview:rotationView];
     
+    [gameStarted play];
+    
     NSLog(@"latitude %+.6f, longitude %+.6f\n", // debugging location
           userLocation.coordinate.latitude,
           userLocation.coordinate.longitude);
@@ -111,14 +114,35 @@
 {
     //handle rotation...
     NSLog(@"Rotating..");
+    
     UIGestureRecognizerState state = [recognizer state];
+    
     
     if (state == UIGestureRecognizerStateBegan || state == UIGestureRecognizerStateChanged)
     {
         CGFloat rotation = [recognizer rotation];
         //rotate the character in sync with the bottom circle
         [recognizer.view setTransform:CGAffineTransformRotate(recognizer.view.transform, rotation)];
-        [characterView setTransform:CGAffineTransformRotate(characterView.transform, rotation)];
+        if (rotation < 0){
+            [characterView setTransform:CGAffineTransformRotate(characterView.transform, M_PI_2)];
+            if (characterState == 0){
+                characterState = 3;
+            }
+            else{
+                characterState--;
+            }
+            NSLog(@"Character state: %i",characterState);
+        }
+        else {
+            [characterView setTransform:CGAffineTransformRotate(characterView.transform, -M_PI_2)];
+            if (characterState == 3){
+                characterState = 0;
+            }
+            else{
+                characterState++;
+            }
+            NSLog(@"Character state: %i",characterState);
+        }
         [recognizer setRotation:0];
     }
     
@@ -136,6 +160,8 @@
     timeLeft = timeLeft - 1;
     if (timeLeft <= 0){
         //game ends
+        [gameEnded play];
+        [self.view.layer removeAllAnimations];
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Game Over"
                                                         message:[NSString stringWithFormat:@"You have run out of time. Score: %i", score]
                                                        delegate:self
@@ -173,6 +199,8 @@
                     spriteName = [spriteNames objectAtIndex:0];
                     UIImage *spriteImg = [UIImage imageNamed:spriteName];
                     UIImageView *spriteView = [[UIImageView alloc] initWithImage:spriteImg];
+                    [spriteView setTag:0];
+                    [spriteView setRestorationIdentifier:spriteName];
                     NSLog(@"spriteView made");
                     CGPoint spritePoint = CGPointMake([self randomBetween:bottomLeft.x and:bottomRight.x], bottomLeft.y);
                     NSLog(@"Sprite point x value: %f, Sprite point y value: %f", spritePoint.x, spritePoint.y);
@@ -189,6 +217,8 @@
                     spriteName = [spriteNames objectAtIndex:1];
                     UIImage *spriteImg = [UIImage imageNamed:spriteName];
                     UIImageView *spriteView = [[UIImageView alloc] initWithImage:spriteImg];
+                    [spriteView setTag:0];
+                    [spriteView setRestorationIdentifier:spriteName];
                     NSLog(@"spriteView made");
                     CGPoint spritePoint = CGPointMake([self randomBetween:bottomLeft.x and:bottomRight.x], bottomLeft.y);
                     NSLog(@"Sprite point x value: %f, Sprite point y value: %f", spritePoint.x, spritePoint.y);
@@ -204,6 +234,8 @@
                     spriteName = [spriteNames objectAtIndex:2];
                     UIImage *spriteImg = [UIImage imageNamed:spriteName];
                     UIImageView *spriteView = [[UIImageView alloc] initWithImage:spriteImg];
+                    [spriteView setTag:0];
+                    [spriteView setRestorationIdentifier:spriteName];
                     NSLog(@"spriteView made");
                     CGPoint spritePoint = CGPointMake([self randomBetween:bottomLeft.x and:bottomRight.x], bottomLeft.y);
                     NSLog(@"Sprite point x value: %f, Sprite point y value: %f", spritePoint.x, spritePoint.y);
@@ -219,6 +251,8 @@
                     spriteName = [spriteNames objectAtIndex:3];
                     UIImage *spriteImg = [UIImage imageNamed:spriteName];
                     UIImageView *spriteView = [[UIImageView alloc] initWithImage:spriteImg];
+                    [spriteView setTag:0];
+                    [spriteView setRestorationIdentifier:spriteName];
                     NSLog(@"spriteView made");
                     CGPoint spritePoint = CGPointMake([self randomBetween:bottomLeft.x and:bottomRight.x], bottomLeft.y);
                     NSLog(@"Sprite point x value: %f, Sprite point y value: %f", spritePoint.x, spritePoint.y);
@@ -239,6 +273,8 @@
                     spriteName = [spriteNames objectAtIndex:0];
                     UIImage *spriteImg = [UIImage imageNamed:spriteName];
                     UIImageView *spriteView = [[UIImageView alloc] initWithImage:spriteImg];
+                    [spriteView setTag:1];
+                    [spriteView setRestorationIdentifier:spriteName];
                     NSLog(@"spriteView made");
                     CGPoint spritePoint = CGPointMake(topLeft.x, [self randomBetween:topLeft.y and:bottomLeft.y]);
                     NSLog(@"Sprite point x value: %f, Sprite point y value: %f", spritePoint.x, spritePoint.y);
@@ -255,6 +291,8 @@
                     spriteName = [spriteNames objectAtIndex:1];
                     UIImage *spriteImg = [UIImage imageNamed:spriteName];
                     UIImageView *spriteView = [[UIImageView alloc] initWithImage:spriteImg];
+                    [spriteView setTag:1];
+                    [spriteView setRestorationIdentifier:spriteName];
                     NSLog(@"spriteView made");
                     CGPoint spritePoint = CGPointMake(topLeft.x, [self randomBetween:topLeft.y and:bottomLeft.y]);
                     NSLog(@"Sprite point x value: %f, Sprite point y value: %f", spritePoint.x, spritePoint.y);
@@ -270,6 +308,8 @@
                     spriteName = [spriteNames objectAtIndex:2];
                     UIImage *spriteImg = [UIImage imageNamed:spriteName];
                     UIImageView *spriteView = [[UIImageView alloc] initWithImage:spriteImg];
+                    [spriteView setTag:1];
+                    [spriteView setRestorationIdentifier:spriteName];
                     NSLog(@"spriteView made");
                     CGPoint spritePoint = CGPointMake(topLeft.x, [self randomBetween:topLeft.y and:bottomLeft.y]);
                     NSLog(@"Sprite point x value: %f, Sprite point y value: %f", spritePoint.x, spritePoint.y);
@@ -285,6 +325,8 @@
                     spriteName = [spriteNames objectAtIndex:3];
                     UIImage *spriteImg = [UIImage imageNamed:spriteName];
                     UIImageView *spriteView = [[UIImageView alloc] initWithImage:spriteImg];
+                    [spriteView setTag:1];
+                    [spriteView setRestorationIdentifier:spriteName];
                     NSLog(@"spriteView made");
                     CGPoint spritePoint = CGPointMake(topLeft.x, [self randomBetween:topLeft.y and:bottomLeft.y]);
                     NSLog(@"Sprite point x value: %f, Sprite point y value: %f", spritePoint.x, spritePoint.y);
@@ -305,6 +347,8 @@
                     spriteName = [spriteNames objectAtIndex:0];
                     UIImage *spriteImg = [UIImage imageNamed:spriteName];
                     UIImageView *spriteView = [[UIImageView alloc] initWithImage:spriteImg];
+                    [spriteView setTag:2];
+                    [spriteView setRestorationIdentifier:spriteName];
                     NSLog(@"spriteView made");
                     CGPoint spritePoint = CGPointMake([self randomBetween:topLeft.x and:topRight.x], topLeft.y);
                     NSLog(@"Sprite point x value: %f, Sprite point y value: %f", spritePoint.x, spritePoint.y);
@@ -320,6 +364,8 @@
                     spriteName = [spriteNames objectAtIndex:1];
                     UIImage *spriteImg = [UIImage imageNamed:spriteName];
                     UIImageView *spriteView = [[UIImageView alloc] initWithImage:spriteImg];
+                    [spriteView setTag:2];
+                    [spriteView setRestorationIdentifier:spriteName];
                     NSLog(@"spriteView made");
                     CGPoint spritePoint = CGPointMake([self randomBetween:topLeft.x and:topRight.x], topLeft.y);
                     NSLog(@"Sprite point x value: %f, Sprite point y value: %f", spritePoint.x, spritePoint.y);
@@ -335,6 +381,8 @@
                     spriteName = [spriteNames objectAtIndex:2];
                     UIImage *spriteImg = [UIImage imageNamed:spriteName];
                     UIImageView *spriteView = [[UIImageView alloc] initWithImage:spriteImg];
+                    [spriteView setTag:2];
+                    [spriteView setRestorationIdentifier:spriteName];
                     NSLog(@"spriteView made");
                     CGPoint spritePoint = CGPointMake([self randomBetween:topLeft.x and:topRight.x], topLeft.y);
                     NSLog(@"Sprite point x value: %f, Sprite point y value: %f", spritePoint.x, spritePoint.y);
@@ -350,6 +398,8 @@
                     spriteName = [spriteNames objectAtIndex:3];
                     UIImage *spriteImg = [UIImage imageNamed:spriteName];
                     UIImageView *spriteView = [[UIImageView alloc] initWithImage:spriteImg];
+                    [spriteView setTag:2];
+                    [spriteView setRestorationIdentifier:spriteName];
                     NSLog(@"spriteView made");
                     CGPoint spritePoint = CGPointMake([self randomBetween:topLeft.x and:topRight.x], topLeft.y);
                     NSLog(@"Sprite point x value: %f, Sprite point y value: %f", spritePoint.x, spritePoint.y);
@@ -370,6 +420,8 @@
                     spriteName = [spriteNames objectAtIndex:0];
                     UIImage *spriteImg = [UIImage imageNamed:spriteName];
                     UIImageView *spriteView = [[UIImageView alloc] initWithImage:spriteImg];
+                    [spriteView setTag:3];
+                    [spriteView setRestorationIdentifier:spriteName];
                     NSLog(@"spriteView made");
                     CGPoint spritePoint = CGPointMake(topRight.x, [self randomBetween:topRight.y and:bottomRight.y]);
                     NSLog(@"Sprite point x value: %f, Sprite point y value: %f", spritePoint.x, spritePoint.y);
@@ -385,6 +437,8 @@
                     spriteName = [spriteNames objectAtIndex:1];
                     UIImage *spriteImg = [UIImage imageNamed:spriteName];
                     UIImageView *spriteView = [[UIImageView alloc] initWithImage:spriteImg];
+                    [spriteView setTag:3];
+                    [spriteView setRestorationIdentifier:spriteName];
                     NSLog(@"spriteView made");
                     CGPoint spritePoint = CGPointMake(topRight.x, [self randomBetween:topRight.y and:bottomRight.y]);
                     NSLog(@"Sprite point x value: %f, Sprite point y value: %f", spritePoint.x, spritePoint.y);
@@ -400,6 +454,8 @@
                     spriteName = [spriteNames objectAtIndex:2];
                     UIImage *spriteImg = [UIImage imageNamed:spriteName];
                     UIImageView *spriteView = [[UIImageView alloc] initWithImage:spriteImg];
+                    [spriteView setTag:3];
+                    [spriteView setRestorationIdentifier:spriteName];
                     NSLog(@"spriteView made");
                     CGPoint spritePoint = CGPointMake(topRight.x, [self randomBetween:topRight.y and:bottomRight.y]);
                     NSLog(@"Sprite point x value: %f, Sprite point y value: %f", spritePoint.x, spritePoint.y);
@@ -415,6 +471,8 @@
                     spriteName = [spriteNames objectAtIndex:3];
                     UIImage *spriteImg = [UIImage imageNamed:spriteName];
                     UIImageView *spriteView = [[UIImageView alloc] initWithImage:spriteImg];
+                    [spriteView setTag:3];
+                    [spriteView setRestorationIdentifier:spriteName];
                     NSLog(@"spriteView made");
                     CGPoint spritePoint = CGPointMake(topRight.x, [self randomBetween:topRight.y and:bottomRight.y]);
                     NSLog(@"Sprite point x value: %f, Sprite point y value: %f", spritePoint.x, spritePoint.y);
@@ -434,10 +492,42 @@
 }
 
 - (void) beginSpriteAnimation: (UIImageView *) sprite {
-    float x = self.view.center.x;
-    float y = self.view.center.y;
+    float x;
+    float y;
+    int duration;
+    switch (sprite.tag){
+        case (0):{
+            x = self.view.center.x-8;
+            y = self.view.center.y + 28;
+            duration = 7;
+            break;
+        }
+        case (1):{
+            x = self.view.center.x-42;
+            y = self.view.center.y-8;
+            duration = 5;
+            break;
+        }
+        case (2):{
+            x = self.view.center.x-6;
+            y = self.view.center.y - 45;
+            duration = 7;
+            break;
+        }
+        case (3):{
+            x = self.view.center.x+26;
+            y = self.view.center.y-7;
+            duration = 5;
+            break;
+            
+        }
+        default:{
+            x = self.view.center.x;
+            y = self.view.center.y;
+            break;
+        }
+    }
     
-    int duration = 7;
     [UIView animateWithDuration: duration
                           delay: 0.0
                         options: UIViewAnimationOptionCurveLinear
@@ -458,6 +548,30 @@
         [sprite removeFromSuperview];
     }
     else {
+        if (characterState == sprite.tag){
+            if ([sprite.restorationIdentifier isEqualToString:@"triangle_sprite"]){
+                score -= 10;
+                timeLeft -=10;
+                _scoreLabel.text = [NSString stringWithFormat:@"Score: %i", score];
+                _timeLabel.text = [NSString stringWithFormat:@"Time: %is", (int)timeLeft];
+            }
+            else if([sprite.restorationIdentifier isEqualToString:@"circle_sprite"]){
+                score -= 5;
+                _scoreLabel.text = [NSString stringWithFormat:@"Score: %i", score];
+                _timeLabel.text = [NSString stringWithFormat:@"Time: %is", (int)timeLeft];
+            }
+            else if ([sprite.restorationIdentifier isEqualToString:@"hex_sprite"]){
+                score += 5;
+                _scoreLabel.text = [NSString stringWithFormat:@"Score: %i", score];
+                _timeLabel.text = [NSString stringWithFormat:@"Time: %is", (int)timeLeft];
+            }
+            else{
+                score += 10;
+                timeLeft += 10;
+                _scoreLabel.text = [NSString stringWithFormat:@"Score: %i", score];
+                _timeLabel.text = [NSString stringWithFormat:@"Time: %is", (int)timeLeft];
+            }
+        }
         [spriteViews removeObject:sprite];
         [sprite removeFromSuperview];
         
@@ -521,5 +635,5 @@
     // Pass the selected object to the new view controller.
 }
 */
-
+                 
 @end
